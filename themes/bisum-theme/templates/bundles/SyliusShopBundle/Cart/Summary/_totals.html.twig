@@ -1,0 +1,71 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set itemsSubtotal = sylius_order_items_subtotal(cart) %}
+{% set taxIncluded = cart.getTaxIncludedTotal() %}
+{% set taxExcluded = cart.getTaxExcludedTotal() %}
+
+<div class="cart-total-area">
+	<h3 class="cart-total-title d-none d-lg-block mb-0">{{ 'sylius.ui.summary'|trans }}</h3>
+	<div class="cart-total-box mt-4">
+		<div class="subtotal-item subtotal-box">
+			<h4 class="subtotal-title">{{ 'sylius.ui.items_total'|trans }}:</h4>
+			<p class="subtotal-value">{{ money.convertAndFormat(itemsSubtotal) }}</p>
+		</div>
+		{% if cart.shipments is not empty %}
+			<div class="subtotal-item shipping-box">
+				<h4 class="subtotal-title">{{ 'sylius.ui.shipping_estimated_cost'|trans }}:</h4>
+				<p class="subtotal-value">
+					{% if cart.getAdjustmentsTotal('shipping') > cart.shippingTotal %}
+						<span class="old-price">{{ money.convertAndFormat(cart.getAdjustmentsTotal('shipping')) }}</span>
+					{% endif %}
+					{{ money.convertAndFormat(cart.shippingTotal) }}
+				</p>
+			</div>
+		{% endif %}
+		{# TAX STARTED #}
+		<div class="{% if taxIncluded and not taxExcluded %} tax-disabled {% endif %}">
+			<h4 class="subtotal-title">{{ 'sylius.ui.taxes_total'|trans }}:</h4>
+			<p class="subtotal-value">
+				{% if not taxIncluded and not taxExcluded %}
+					<div id="sylius-cart-tax-none" {{ sylius_test_html_attribute('cart-no-tax') }}>{{ money.convertAndFormat(0) }}</div>
+				{% endif %}
+				{% if taxExcluded %}
+					<div id="sylius-cart-tax-excluded" {{ sylius_test_html_attribute('cart-tax-exluded') }}>{{ money.convertAndFormat(taxExcluded) }}</div>
+				{% endif %}
+				{% if taxIncluded %}
+					<div class="tax-disabled">
+						<small>({{ 'sylius.ui.included_in_price'|trans }})</small>
+						<span id="sylius-cart-tax-included" {{ sylius_test_html_attribute('cart-tax-included') }}>{{ money.convertAndFormat(taxIncluded) }}</span>
+					</div>
+				{% endif %}
+			</p>
+		</div>
+		{# TAX ENDED #}
+		{% if cart.orderPromotionTotal %}
+			<div class="subtotal-item discount-box">
+				<h4 class="subtotal-title">{{ 'sylius.ui.discount'|trans }}:</h4>
+				<p class="subtotal-value">{{ money.convertAndFormat(cart.orderPromotionTotal) }}</p>
+			</div>
+		{% endif %}
+		<hr/>
+		<div class="subtotal-item discount-box">
+			<h4 class="subtotal-title">{{ 'sylius.ui.order_total'|trans }}:</h4>
+			<p class="subtotal-value">{{ money.convertAndFormat(cart.total) }}</p>
+		</div>
+		{% if cart.currencyCode is not same as(sylius.currencyCode) %}
+			<div class="subtotal-item discount-box">
+				<h4 class="subtotal-title">{{ 'sylius.ui.base_currency_order_total'|trans }}:</h4>
+				<p class="subtotal-value">{{ money.format(cart.total, cart.currencyCode) }}</p>
+			</div>
+		{% endif %}
+		{# <p class="shipping_text">{{ 'sylius.ui.shipping_taxes_calculated_checkout'|trans }}</p> #}
+		<p class="shipping_text">{{ 'Shipping & taxes calculated at checkout'|trans }}</p>
+		<div class="d-flex justify-content-center mt-4">
+			{# <a href="checkout.html" class="position-relative btn-primary text-uppercase">
+				<i class="fa fa-check"></i>
+				{{ 'sylius.ui.checkout'|trans }}
+			</a> #}
+            {# {% include '@SyliusShop/Cart/Summary/_checkout.html.twig' %} #}
+		</div>
+	</div>
+</div>

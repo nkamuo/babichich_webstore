@@ -1,0 +1,15 @@
+<div class="featured-collection mt-100 overflow-hidden">
+	<div class="collection-tab-inner">
+		<div class="container">
+			<div class="section-header text-center">
+				<h2 class="section-heading primary-color">Featured Products</h2>
+			</div>
+			<div>
+				{{ render(url('sylius_shop_partial_product_index_latest', {'count': 8, 'template': '@SyliusShop/Product/_horizontalList.html.twig'})) }}
+			</div>
+			<div class="view-all text-center" data-aos="fade-up" data-aos-duration="700">
+				<a class="btn-primary" href="#">VIEW ALL</a>
+			</div>
+		</div>
+	</div>
+</div>

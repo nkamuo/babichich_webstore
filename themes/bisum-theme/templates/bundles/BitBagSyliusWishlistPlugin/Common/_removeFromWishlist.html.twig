@@ -1,0 +1,9 @@
+<a
+    href="{{ path('bitbag_sylius_wishlist_plugin_shop_wishlist_remove_product_variant', { wishlistId: wishlist.id, variantId: variant.id }) }}"
+    class="btn btn-outline-danger btn-sm"
+    data-product-name="{{ product.name }}"
+    data-tooltip="{{ 'bitbag_sylius_wishlist_plugin.ui.remove_from_wishlist'|trans }}"
+    {{ sylius_test_html_attribute('wishlist-remove-item') }}
+>
+    <i class="fa fa-trash"></i>
+</a>

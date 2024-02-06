@@ -1,0 +1,33 @@
+{{ form_start(form, {'action': path('sylius_shop_cart_save'), 'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate', 'id': form.vars.id}}) }}
+{{ form_errors(form) }}
+<input type="hidden" name="_method" value="PATCH"/>
+{{ form_row(form._token) }}
+{{ form_end(form, {'render_rest': false}) }}
+
+<table class="cart-table w-100 table">
+	<thead>
+		<tr>
+			<th class="cart-caption heading_18">{{ 'sylius.ui.item'|trans }}</th>
+			<th class="cart-caption heading_18"></th>
+			<th class="cart-caption text-center heading_18 d-none d-md-table-cell">{{ 'sylius.ui.qty'|trans }}</th>
+			<th class="cart-caption text-end heading_18">{{ 'sylius.ui.total'|trans }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for key, item in cart.items %}
+			{% include '@SyliusShop/Cart/Summary/_item.html.twig' with {'item': item, 'form': form.items[key], 'main_form': form.vars.id, 'loop_index': loop.index} %}
+		{% endfor %}
+	</tbody>
+</table>
+<div class="mb-3"></div>
+<div class="d-flex justify-content-end">
+{# <div class="col"> #}
+	{% include '@SyliusShop/Cart/Summary/_update.html.twig' with {'main_form': form.vars.id} %}
+    {# </div> #}
+</div>
+<div class="mb-3"></div>
+
+{% if form.promotionCoupon is defined %}
+	<div class="mb-3"></div>
+	{{ sylius_template_event('sylius.shop.cart.coupon', {'cart': cart, 'form': form, 'main_form': form.vars.id}) }}
+{% endif %}

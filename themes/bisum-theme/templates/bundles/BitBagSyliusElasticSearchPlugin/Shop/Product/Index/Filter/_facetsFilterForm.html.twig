@@ -1,0 +1,13 @@
+<div class="filter-widget">
+	<div class="filter-header faq-heading heading_18 d-flex align-items-center justify-content-between border-bottom" data-bs-toggle="collapse" data-bs-target="#filter-collection-{{form.vars.id}}">
+		{{form.vars.label?: ('sylius.ui.facets' | trans)}}
+		<span class="faq-heading-icon">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-down">
+				<polyline points="6 9 12 15 18 9"></polyline>
+			</svg>
+		</span>
+	</div>
+	<div id="filter-collection-{{form.vars.id}}" class="accordion-collapse collapse show p-3">
+		{{ form_row(form) }}
+	</div>
+</div>

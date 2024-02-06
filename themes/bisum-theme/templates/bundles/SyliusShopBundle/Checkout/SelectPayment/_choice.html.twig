@@ -1,0 +1,15 @@
+<div class="item" {{ sylius_test_html_attribute('payment-item') }}>
+    <div class="field">
+        <div class="form-check">
+            {{ form_widget(form, sylius_test_form_attribute('payment-method-select'), {'attr': {'class': 'form-check-input'}}) }}
+        </div>
+    </div>
+    <div class="content">
+        <a class="header">{{ form_label(form, null, {'label_attr': {'data-test-payment-method-label': ''}}) }}</a>
+        {% if method.description is not null %}
+            <div class="description">
+                <p>{{ method.description }}</p>
+            </div>
+        {% endif %}
+    </div>
+</div>

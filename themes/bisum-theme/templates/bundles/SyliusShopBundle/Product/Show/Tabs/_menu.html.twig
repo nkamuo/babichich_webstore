@@ -1,0 +1,14 @@
+<div class="tab-list product-tab-list">
+	<nav class="nav product-tab-nav">
+
+		<a class="product-tab-link tab-link active" href="#details" data-bs-toggle="tab">{{ 'sylius.ui.details'|trans }}</a>
+		{% if product.attributes|length > 0 %}
+			<a class="product-tab-link tab-link " href="#attributes" data-bs-toggle="tab">{{ 'sylius.ui.attributes'|trans }}</a>
+		{% endif %}
+		<a class="product-tab-link tab-link" href="#reviews" data-bs-toggle="tab">{{ 'sylius.ui.reviews'|trans }}
+			({{ product.acceptedReviews|length }})</a>
+
+		{# <a class="product-tab-link tab-link" href="#pdescription" data-bs-toggle="tab">Description</a> #}
+
+	</nav>
+</div>

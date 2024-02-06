@@ -1,0 +1,63 @@
+{# 
+{% set images = product.imagesByType('thumbnail') %}
+{% if images is not empty %}
+	{% set paths = images %} #}
+{% set isGallary = gallery is not defined or gallery == true %}
+{% if product.images is not empty %}
+	{% set images = product.images %}
+	{% set largeimages = images|map(image => image.path|imagine_filter(filter|default('app_product_image'))) %}
+	{% set thumbnails = images|map(image => image.path|imagine_filter(filter|default('sylius_shop_product_thumbnail'))) %}
+{% else %}
+	{% set largeimages = ['https://placehold.it/700x1200'] %}
+	{% set thumbnails = ['https://placehold.it/200x200'] %}
+{% endif %}
+
+
+<div class="product-gallery product-gallery-vertical d-flex">
+	<div class="product-img-large">
+		<div class="qv-large-slider img-large-slider common-slider" data-slick='{
+																																																																		                                            "slidesToShow": 1,
+																																																																		                                            "slidesToScroll": 1,
+																																																																		                                            "dots": false,
+																																																																		                                            "arrows": false,
+																																																																		                                            "asNavFor": ".qv-thumb-slider"
+																																																																		                                        }'>
+			{% for path in largeimages %}
+				<div class="img-large-wrapper">
+					{% if isGallary %}
+						<a href="{{ path }}" data-fancybox="gallery">
+						{% endif %}
+						<img src="{{ path }}" alt="{{ product.name}}">
+						{% if isGallary %}
+						</a>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="product-img-thumb">
+		<div class="qv-thumb-slider img-thumb-slider common-slider" data-vertical-slider="true" data-slick='{
+																																																																		                                            "slidesToShow": 5,
+																																																																		                                            "slidesToScroll": 1,
+																																																																		                                            "dots": false,
+																																																																		                                            "arrows": true,
+																																																																		                                            "infinite": false,
+																																																																		                                            "speed": 300,
+																																																																		                                            "cssEase": "ease",
+																																																																		                                            "focusOnSelect": true,
+																																																																		                                            "swipeToSlide": true,
+																																																														                                            "asNavFor": ".qv-large-slider"
+																																																																		                                        }'>
+
+			{% for path in thumbnails %}
+				<div>
+					<div class="img-thumb-wrapper">
+						<img src="{{ path }}" alt="{{ product.name}}">
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="activate-arrows show-arrows-always arrows-white d-none d-lg-flex justify-content-between mt-3"></div>
+	</div>
+</div>
+<!-- End Product Gallery -->

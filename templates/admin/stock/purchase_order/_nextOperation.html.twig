@@ -1,0 +1,29 @@
+{% set order = purchase_order %}
+
+{% if order.state in ['draft', 'pending'] %}
+	{% include 'admin/stock/purchase_order/_dispatch_form.html.twig' %}
+{% elseif order.state in ['intransit', ] %}
+	{% include 'admin/stock/purchase_order/_receive_form.html.twig' %}
+{% elseif order.state in ['delivered', ] %}
+	{% include 'admin/stock/purchase_order/_confirm_form.html.twig' %}
+{% elseif order.state in ['confirmed', ] %}
+	{# {% include 'admin/stock/purchase_order/_cancel_form.html.twig' %} #}
+	<button class="ui button primary icon">
+		<i class="icon check"></i>
+		{{ 'sylius.ui.cancel'|trans }}
+	</button>
+{% elseif order.state in ['cancelled', ] %}
+	<button class="ui button red icon">
+		<i class="icon cancel"></i>
+		{{ 'sylius.ui.cancelled'|trans }}
+	</button>
+	{# {% include 'admin/stock/purchase_order/_reset_form.html.twig' %} #}
+
+{% elseif order.state in ['returned', ] %}
+	<button class="ui button red icon">
+		<i class="icon cancel"></i>
+		{{ 'sylius.ui.returned'|trans }}
+	</button>
+{% else %}
+	NO STATE
+{% endif %}

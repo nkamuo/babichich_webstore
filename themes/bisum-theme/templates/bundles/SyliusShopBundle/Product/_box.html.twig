@@ -1,0 +1,210 @@
+{# {{ sylius_template_event('sylius.shop.product.index.box', {'product': product}) }} #}
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{% set modalName = 'product' ~ product.id ~ '-' ~ 'quickview-modal' %}
+{% set isWrapped = attrs is defined %}
+{% set boxRand = random() %}
+{% set boxId = 'product-box-' ~ product.id ~ '-' ~ boxRand %}
+{% set url =  path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) %}
+{% set hasPrices = false %}
+{% if not product.variants.empty() %}
+	{% set variant = product|sylius_resolve_variant %}
+	{% set _amount = variant|sylius_calculate_price({'channel': sylius.channel})%}
+	{% set _original = variant|sylius_calculate_original_price({'channel': sylius.channel}) %}
+	{% set hasPrices = true %}
+{% endif %}
+{% if isWrapped %}
+	{#  #}
+	{# variant|sylius_calculate_price({'channel': sylius.channel}) #}
+
+
+	<div {% for name, value in attrs %} {{ name }}="{{ value }}" {% endfor %}> {% endif %}
+	<div id="{{boxId}}" class="product-card">
+		<div class="product-card-img">
+			{% set images = product.imagesByType('thumbnail') %}
+			{% if images is not empty %}
+				{% set paths = images|slice(0, 2)|map(image => image.path|imagine_filter(filter|default('app_product_thumbnail'))) %}
+			{% elseif product.images.first %}
+				{% set paths = [product.images.first.path|imagine_filter(filter|default('app_product_thumbnail'))] %}
+			{% else %}
+				{% set paths = ['https://placehold.it/200x200'] %}
+			{% endif %}
+
+			{% set primaryImagePath = paths[0] %}
+			{% set secondaryImagePath = paths[1]?? null %}
+
+			<a class="hover-switch" href="{{url}}">
+
+				{% if secondaryImagePath %}
+					<img class="secondary-img" src="{{ secondaryImagePath }}" alt="{{product.name}}">
+				{% endif %}
+
+				<img class="primary-img" src="{{ primaryImagePath}}" alt="{{product.name}}">
+
+			</a>
+
+			{% if hasPrices %}
+				<div class="product-badge">
+					{% if _amount != _original %}
+						{% set percentageOff = money.calculatPercentageOff(product) %}
+						<span
+							class="badge-label badge-percentage rounded">
+							{# -{{ percentageOff}}% #}
+							Promo
+						</span>
+					{% endif %}
+				</div>
+			{% endif %}
+
+			<div class="product-card-action product-card-action-2 justify-content-center">
+				<a @click="() => toggle()" r-href="#{{ modalName }}" class="action-card action-quickview" data-bs-toggle="modal">
+					<svg width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10 0C15.5117 0 20 4.48828 20 10C20 12.3945 19.1602 14.5898 17.75 16.3125L25.7188 24.2812L24.2812 25.7188L16.3125 17.75C14.5898 19.1602 12.3945 20 10 20C4.48828 20 0 15.5117 0 10C0 4.48828 4.48828 0 10 0ZM10 2C5.57031 2 2 5.57031 2 10C2 14.4297 5.57031 18 10 18C14.4297 18 18 14.4297 18 10C18 5.57031 14.4297 2 10 2ZM11 6V9H14V11H11V14H9V11H6V9H9V6H11Z" fill="#00234D"/>
+					</svg>
+				</a>
+
+
+				{% include '@SyliusShop/Product/Common/_addToWishlist.html.twig'%}
+				{# ADD TO CART #}
+				{{ render(url('sylius_shop_partial_cart_add_item', {'template': '@SyliusShop/Product/Common/_addToCart.html.twig', 'productId': product.id})) }}
+				{# ADD TO CART #}
+
+			</div>
+		</div>
+		<div
+			class="product-card-details">
+			{# <ul class="color-lists list-unstyled d-flex align-items-center">
+																																																				<li>
+																																																					<a href="javascript:void(0)" class="color-swatch swatch-black active"></a>
+																																																				</li>
+																																																				<li>
+																																																					<a href="javascript:void(0)" class="color-swatch swatch-cyan"></a>
+																																																				</li>
+																																																				<li>
+																																																					<a href="javascript:void(0)" class="color-swatch swatch-purple"></a>
+																																																				</li>
+																																																			</ul> #}
+			<h3 class="product-card-title">
+				<a href="{{ url }}">{{ product.name|title }}</a>
+			</h3>
+
+			{% if not product.variants.empty() %}
+				{% set price = money.calculatePrice(product|sylius_resolve_variant) %}
+				{% set originalPrice = money.calculateOriginalPrice(product|sylius_resolve_variant) %}
+				<div class="product-card-price">
+					<span class="card-price-regular">
+						{{ price}}
+					</span>
+					{% if price != originalPrice %}
+						<span
+							class="card-price-compare text-decoration-line-through">
+							{# $1759 #}
+							{{ originalPrice }}
+						</span>
+					{% endif %}
+				</div>
+			{% endif %}
+		</div>
+		<Teleport to="body">
+			{% set modalName = boxId ~ '-quickview-modal' %}
+			{% include '@SyliusShop/Product/_drawer_product_quick_view.html.twig' %}
+		</Teleport>
+	</div>
+
+	{% if isWrapped %}
+	</div>
+{% endif %}
+{% block javascripts %}
+
+
+	{% set previewId = 'product-' ~ product.id ~ '-preview' %}
+	{#  ~ random() %} #}
+	{% set cartFormId = previewId ~'-' ~ 'sylius-product-adding-to-cart' %}
+
+	<script type="module">
+		import {createApp, ref} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+
+const productShow = createApp({
+setup() { // >> CART FEATURS
+
+const cartQuantity = ref(1);
+
+function increaseCartQuantity() {
+if (cartQuantity.value < 1000) 
+cartQuantity.value ++;
+
+
+
+}
+
+
+function decreaseCartQuantity() {
+if (cartQuantity.value > 1) 
+cartQuantity.value --;
+
+
+
+}
+
+async function addToCart(evt) { // console.log('EVENT', evt);
+evt ?. preventDefault();
+try {
+isAddingToCart.value = true
+const form = evt.target;
+// document.getElementById('{{ cartFormId }}');
+// console.log('EVT: ', evt, "FORM: ", form)
+const formData = new FormData(form);
+const json = JSON.stringify(Object.fromEntries(formData));
+const response = await fetch(form.action, {
+method: 'POST',
+headers: { // 'Content-Type': 'application/json'
+'Accepts': 'application/json'
+},
+// body: json
+body: formData
+})
+const data = await response.json()
+console.log(data)
+} catch (err) {
+console.log(err)
+} finally {
+isAddingToCart.value = false
+}
+}
+const isAddingToCart = ref(false);
+const product = ref({{ product|json_encode|raw }})
+
+// << CART FEATURS
+const message = ref('Hello vue!')
+const productQuickPreviewOpen = ref(false)
+function toggle() {
+productQuickPreviewOpen.value = true;
+setTimeout(() => {
+
+const element = document.getElementById('{{ modalName }}');
+element.addEventListener('hidden.bs.modal', function (event) {
+productQuickPreviewOpen.value = false;
+});
+
+const myModal = new bootstrap.Modal('{{ "#" ~ modalName }}', {keyboard: false});
+myModal.show();
+// hidden.bs.modal
+
+}, 10);
+}
+return {
+message,
+productQuickPreviewOpen,
+toggle,
+// >> CART FEATURS
+product,
+cartQuantity,
+addToCart,
+isAddingToCart,
+increaseCartQuantity,
+decreaseCartQuantity
+}
+}
+}).mount('{{ "#" ~ boxId }}')
+	</script>
+{% endblock %}

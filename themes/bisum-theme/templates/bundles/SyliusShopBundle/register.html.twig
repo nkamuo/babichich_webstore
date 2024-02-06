@@ -1,0 +1,110 @@
+{% extends '@SyliusShop/bisum-layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+
+{% block title %}
+	{{ 'sylius.ui.register_in_the_store'|trans }}
+	|
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+
+	<!-- breadcrumb start -->
+	<div class="breadcrumb">
+		<div class="container">
+			<ul class="list-unstyled d-flex align-items-center m-0">
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<svg class="icon icon-breadcrumb" width="64" height="64" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g opacity="0.4">
+							<path d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z" fill="#000"/>
+						</g>
+					</svg>
+				</li>
+				<li>Register</li>
+			</ul>
+		</div>
+	</div>
+	<!-- breadcrumb end -->
+
+	{# {% include '@SyliusShop/Register/_header.html.twig' %} #}
+
+
+	<main id="MainContent" class="content-for-layout">
+		<div class="login-page mt-100">
+			<div
+				class="container">
+				{# {{dump(form)}} #}
+				{{ form_start(form, {'attr':{'class':'login-form common-form mx-auto'}}) }}
+				<div class="section-header mb-3">
+					<h2 class="section-heading text-center">Register</h2>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						{{ form_errors(form) }}
+					</div>
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">First name</label>
+																																																										<input type="text"/> #}
+							{{form_row(form.firstName)}}
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Last name</label>
+																																																										<input type="text"/> #}
+
+							{{form_row(form.lastName)}}
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Email address</label>
+																																																										<input type="email"/> #}
+							{{form_row(form.email)}}
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Phone Number</label>
+																																																										<input type="tel"/> #}
+							{{form_row(form.phoneNumber)}}
+						</fieldset>
+					</div>
+
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Password</label>
+																																																										<input type="password"/> #}
+							{{form_row(form.user)}}
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Password</label>
+																																																										<input type="password"/> #}
+							{# {{form_row(form.subscribedToNewsletter, {'attr':{'checked': 'checked'}})}} #}
+							{# <div class="form-check form-switch my-4"> <input class="form-check-input" type="checkbox" role="switch" id="{{form.subscribedToNewsletter.vars.id}}" name="{{ form.subscribedToNewsletter.vars.full_name }}" value="{{ form.subscribedToNewsletter.vars.value}}" {% if form.subscribedToNewsletter.vars.data %} checked {% endif %}>
+															<label class="form-check-label" for="{{ form.subscribedToNewsletter.vars.id }}">{{ form.subscribedToNewsletter.vars.label | trans}}</label>
+														</div> #}
+								<div class="form-check form-switch">
+								<input class="form-check-input" type="radio" role="switch" id="flexSwitchCheckDefault">
+								<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+							</div>
+						</fieldset>
+					</div>
+					<div class="col-12 mt-3">
+						<button type="submit" class="btn-primary d-block mt-3 btn-signin">CREATE</button>
+					</div>
+				</div>
+				{{ form_end(form,{'render_rest': false}) }}
+			</div>
+		</div>
+	</main>
+{% endblock %}

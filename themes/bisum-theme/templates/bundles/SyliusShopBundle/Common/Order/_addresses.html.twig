@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col" id="sylius-billing-address" {{ sylius_test_html_attribute('billing-address') }}>
+            <h4 class="fw-bold">{{ 'sylius.ui.billing_address'|trans }}</h4>
+            {% include '@SyliusShop/Common/_address.html.twig' with {'address': order.billingAddress} %}
+        </div>
+        <div class="col" id="sylius-shipping-address" {{ sylius_test_html_attribute('shipping-address') }}>
+            <h4 class="fw-bold">{{ 'sylius.ui.shipping_address'|trans }}</h4>
+            {% include '@SyliusShop/Common/_address.html.twig' with {'address': order.shippingAddress} %}
+        </div>
+    </div>
+</div>

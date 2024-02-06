@@ -1,0 +1,128 @@
+{% macro item(taxon, level = 0) %}
+	{% import _self as macros %}
+
+	{% set hasChildren = taxon.enabledChildren|length > 0 %}
+	{% set hasGrandChildren = hasChildren %}
+	{# {% set hasGrandChildren = hasChildren and taxon.enabledChildren|filter(c => c.enabledChildren is not empty)|length > 0 %} #}
+	{% set href = path('sylius_shop_product_index', {'slug': taxon.slug, '_locale': taxon.translation.locale}) %}
+
+	{% if level == 0 %}
+		<li class="menu-list-item  nav-item-sub {% if hasGrandChildren %} has-megamenu {% else %} has-dropdown {% endif %}">
+			<div class="mega-menu-header">
+				<a class="nav-link-sub nav-text-sub" href="{{ href}}">
+					{{taxon.name}}
+				</a>
+				{% if hasChildren %}
+					<span class="open-submenu">
+						<svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="6 9 12 15 18 9"></polyline>
+						</svg>
+					</span>
+				{% endif %}
+			</div>
+			{% if hasGrandChildren %}
+				<div class="submenu-transform submenu-transform-desktop">
+					<div class="container">
+						<ul class="submenu megamenu-container list-unstyled">
+							{% for child in taxon.enabledChildren %}
+								{{ macros.item(child, level + 1) }}
+							{% endfor %}
+							<li class="menu-list-item nav-item-sub">
+								<div class="mega-menu-header d-flex align-items-center justify-content-between">
+									<a class="mega-menu-img nav-link-sub nav-text-sub" href="collection-left-sidebar.html">
+										<img class="menu-img" src="{{ asset('assets/img/menu/1.jpg')}}" alt="img">
+										<h2 class="img-menu-heading text_16 mt-2">Featured
+																						                                                                    Collection</h2>
+										<div class="img-menu-action text_12 bg-transparent p-0">
+											<span>DISCOVER NOW</span>
+											<span>
+												<svg xmlns="http://www.w3.org/2000/svg" width="30" height="18" fill="#000" class="icon-right-long" viewbox="0 0 16 16">
+													<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+												</svg>
+											</span>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			{% elseif hasChildren %}
+				<div class="submenu-transform submenu-transform-desktop">
+					<ul class="submenu list-unstyled">
+						{% for child in taxon.enabledChildren %}
+							{% set href = path('sylius_shop_product_index', {'slug': child.slug, '_locale': child.translation.locale}) %}
+							<li class="menu-list-item nav-item-sub">
+								<a class="nav-link-sub nav-text-sub" href="{{href}}">{{child.name}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% endif %}
+		</li>
+
+
+		{#  SUB ITEMS #}
+
+	{% elseif level == 1 %}
+
+		<li class="menu-list-item nav-item-sub">
+			<div class="mega-menu-header">
+				<a href="{{ href}}" class="nav-link-sub nav-text-sub megamenu-heading">
+					{{taxon.name}}
+				</a>
+			</div>
+			{% if hasChildren %}
+				<div class="submenu-transform megamenu-transform">
+					<ul class="megamenu list-unstyled">
+						{% for child in taxon.enabledChildren %}
+							{# {% set href = path('sylius_shop_product_index', {'slug': child.slug, '_locale': child.translation.locale}) %}
+																																																	<li class="menu-list-item nav-item-sub">
+																																																		<a class="nav-link-sub nav-text-sub" href="{{href}}">
+																																																			{{child.name}}
+																																																		</a>
+																																																	</li> #}
+							{{ macros.item(child, level + 1) }}
+						{% endfor %}
+					</ul>
+				</div>
+				{# {% else %}
+																				{% set href = path('sylius_shop_product_index', {'slug': taxon.slug, '_locale': taxon.translation.locale}) %}
+																				<li class="menu-list-item nav-item-sub">
+																					<a class="nav-link-sub nav-text-sub" href="{{href}}">
+																						{{taxon.name}}
+																					</a>
+																				</li> #}
+			{% endif %}
+		</li>
+	{% elseif taxon.enabledChildren|length > 0 %}
+		<div class="ui dropdown item" {{ sylius_test_html_attribute('menu-item') }}>
+			<span class="text">{{ taxon.name }}</span>
+			<i class="dropdown icon"></i>
+			<div class="menu">
+				{% for childTaxon in taxon.enabledChildren %}
+					{{ macros.item(childTaxon, level + 1) }}
+				{% endfor %}
+			</div>
+		</div>
+	{% else %}
+		<li class="menu-list-item nav-item-sub">
+			<a class="nav-link-sub nav-text-sub" href="{{ href}}" class="item" {{ sylius_test_html_attribute('menu-item') }}>{{ taxon.name }}</a>
+		</li>
+	{% endif %}
+{% endmacro %}
+
+{% import _self as macros %}
+
+{% if taxons|length > 0 %}
+
+	<nav class="site-navigation">
+		<ul class="main-menu list-unstyled justify-content-center">
+
+			{% for taxon in taxons %}
+				{{ macros.item(taxon) }}
+			{% endfor %}
+		</ul>
+	</nav>
+
+{% endif %}

@@ -1,0 +1,71 @@
+{% if app.user %}
+    {% if findAllByShopUserAndToken(app.user)|length < 2 %}
+        <a
+            href="{{ path('bitbag_sylius_wishlist_plugin_shop_wishlist_add_product', {'productId': product.id}) }}"
+            class="btn btn-primary"
+            data-product-name="{{ product.name }}"
+            {{ sylius_test_html_attribute('wishlist-add-product') }}
+        >
+            <i class="fa fa-heart"></i>
+            {{ 'bitbag_sylius_wishlist_plugin.ui.add_to_wishlist'|trans }}
+        </a>
+    {% else %}
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="addToWishlistDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-heart"></i>
+                <span class="text">Add to wishlist</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="addToWishlistDropdown">
+                {% for wishlist in findAllByShopUserAndToken(app.user)  %}
+                    <li>
+                        <a
+                            href="{{ path('bitbag_sylius_wishlist_plugin_shop_wishlist_add_product_to_selected_wishlist', {'wishlistId': wishlist.id, 'productId': product.id}) }}"
+                            class="dropdown-item"
+                            data-product-name="{{ product.name }}"
+                            {{ sylius_test_html_attribute('bitbag-add-to-wishlist') }}
+                        >
+                            <span>
+                                {{ wishlist.name }}
+                            </span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% else %}
+    {% if findAllByAnonymousAndChannel(sylius.channel)|length < 2 %}
+        <a
+            href="{{ path('bitbag_sylius_wishlist_plugin_shop_wishlist_add_product', {'productId': product.id}) }}"
+            class="btn btn-primary"
+            data-product-name="{{ product.name }}"
+            {{ sylius_test_html_attribute('wishlist-add-product') }}
+        >
+            <i class="fa fa-heart"></i>
+            {{ 'bitbag_sylius_wishlist_plugin.ui.add_to_wishlist'|trans }}
+        </a>
+    {% else %}
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="addToWishlistDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-heart"></i>
+                <span class="text">Add to wishlist</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="addToWishlistDropdown">
+                {% for wishlist in findAllByAnonymousAndChannel(sylius.channel) %}
+                    <li>
+                        <a
+                            href="{{ path('bitbag_sylius_wishlist_plugin_shop_wishlist_add_product_to_selected_wishlist', {'wishlistId': wishlist.id, 'productId': product.id}) }}"
+                            class="dropdown-item"
+                            data-product-name="{{ product.name }}"
+                            {{ sylius_test_html_attribute('wishlist-add-product') }}
+                        >
+                            <span>
+                                {{ wishlist.name }}
+                            </span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}

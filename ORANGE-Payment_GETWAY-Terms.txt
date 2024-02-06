@@ -1,0 +1,285 @@
+Orange APIs General Terms
+
+
+Version number: 2.1
+Date: 14 March 2022
+
+These terms and conditions constitute the agreement applicable between: (i) You and Orange, in respect of your use of Orange Developer and any APIs provided by Orange and (ii) You and each relevant Orange Affiliate, in respect of your use of any APIs provided by that Orange Affiliate.
+
+In order to use an Orange API, You must first agree to be bound by these terms and conditions on your own behalf and/or on behalf of your company, organisation, or legal entity as its authorised legal representative by clicking to accept where the option is made available to You.
+
+1.    DEFINITIONS
+
+API Client means the website(s) and/or application(s) in connection with which You use or your Business Customers use the Orange APIs.
+
+Business Customer means merchants, financial institutions and other entities, that have signed an agreement with You (acting as an aggregator or a distributor of Orange API(s) and approved by Orange or an Orange Affiliate in order to use the Orange API(s) in connection with their API Clients.
+
+Authorized Sub-processor means any entity which processes the Personal Data upon your request.
+
+Confidential Information means all non-public information that a party designates, either in writing or orally, as being confidential, or which, under the circumstances of disclosure, should be treated as confidential. Confidential Information includes information relating to (i) business policies or practices of a party, (ii) customers or suppliers of a party, or (iii) information received from others that the disclosing party is obligated to treat as confidential, but does not include information that was known to the receiving party prior to disclosure by the disclosing party, or information that becomes publicly available through no fault of the receiving party.
+
+Elements of the Orange Brand include, (without limitation):
+
+(a)    the mark orange
+(b)    the orange word and logo marks;
+(c)    the colour orange Pantone 151 or similar;
+(d)    the fonts specified in the Orange APIs Brand Association Guideline;
+(e)    the distinctive orange, black and white livery;
+(f)    any brand line adopted as an Element of the Orange Brand; and
+(g)    local language translations and transliterations of, or variations to, the above.
+
+End User means any of your end user customers and end user customers of your Business Customers.
+
+Fee means any fee or fees payable to Orange or an Orange Affiliate, as specified in the Specific Terms.
+
+General Terms means these Orange APIs General Terms.
+
+Orange means Orange SA, with registered address located at 111, quai du Président Roosevelt CS 70222 92449 ISSY LES MOULINEAUX CEDEX, France, (VAT registered: FR 89 380 129 866).
+
+Orange Affiliate means the Orange subsidiary identified, in the Specific Terms, as the provider of an Orange API.
+
+Orange API means an API made available through the Orange Developer Website.
+
+Orange APIs Brand Association Guideline means the brand guideline located at https://developer.orange.com/tools/brand-guidelines.
+
+Orange Brand Features means the Orange Marks and other intangible proprietary rights used or approved for use by Orange to identify Orange goods and services and includes (without limiting the generality of the foregoing) any Element of the Orange Brand and any marketing properties designated as Elements of the Orange Brand from time to time.
+
+Orange Developer Website means the web site made available by Orange for the purpose of the use of Orange APIs.
+
+Orange Marks means the trade and service marks owned and managed by Orange Brand Services Limited.
+
+Personal Data means any information relating to an identified or identifiable natural person ("data subject") such as an individual’s name, social security number, financial account numbers (e.g., credit or debit card number or bank account information), account passwords and passcodes, driver’s license and/or government-issued identification number, mother’s maiden name and healthcare records. An identifiable person is one who can be identified, directly or indirectly, in particular by reference to an identification number or to one or more factors specific to his/her physical, physiological, mental, economic, cultural or social identity.
+
+Private Key(s) means Your account password and any API key (Client ID and Client secret) provided to allow the API Client to access an Orange API.
+
+Specific Terms means any terms provided by Orange or an Orange Affiliate for a specific Orange API. These Specific Terms apply to You and the use of Orange APIs by your Business Customers (when You act as an aggregator or a distributor of Orange APIs).
+
+Terms means these General Terms, together with any Specific Terms as applicable.
+
+You means the individual or legal entity using an Orange API, being specified that you can act as (i) editor, developer and/or distributor of the API Client or (ii) aggregator or distributor of Orange API(s).
+
+2.    REGISTRATION
+
+2.1    You may not use any Orange APIs and may not accept these Terms (i) unless You are of legal age to form a binding contract; and (ii) if You are barred from using or receiving Orange APIs under the laws of any country.
+
+2.2    In order to access certain APIs, You may be required to provide certain information. You agree that You will keep any information You provide accurate and up to date.
+
+2.3    You agree to treat your Orange Developer account and any Private Keys associated with it as Confidential Information, and to use them only in accordance with these Terms and as otherwise instructed by Orange. As a consequence You represent and warrant that You will protect such elements from unauthorised access, use, disclosure, alteration or destruction and will immediately notify Orange in writing if You have any reason to believe there has been a compromise of any of your Private Keys.
+
+2.4    By submitting any information (either personal or non-personal information) or material (for example, description of your service or application) to Orange, You grant Orange a restricted right to use such information or material for the sole purpose of putting You in contact with relevant people at Orange and/or at its affiliates and/or at Orange’s business partners. Therefore, You accept that Orange discloses your information to any of its affiliated companies and/or Orange’s business partners. Your information or material will not be used for any other purposes and will remain confidential within Orange, its affiliates and Orange’s business partners. In case You have the opportunity to work with Orange, any of its affiliates and/or any Orange’s business partners and wish to use any services provided by Orange (including the distribution of your service or application), specific agreements will apply to such services and suitable rights to use will be granted.
+
+3.    USING ORANGE APIs
+
+3.1    Orange and/or Orange Affiliates grant You a limited right to use Orange APIs for the purpose set out in these Terms. Orange and/or Orange Affiliates retain all right, title and interest in and intellectual property rights related to Orange APIs.
+
+3.2    You will ensure that your End User terms or Business Customers terms (when You act as an aggregator or a distributor of Orange APIs) are consistent with these Terms.
+
+3.3    You will use Orange APIs only as permitted by law.
+
+3.4    You will only access (or attempt to access) an Orange API by the means described in the Specific Terms governing that API and the documentation of that API.
+
+3.5    Orange and Orange Affiliates may monitor, control and restrict the use of Orange APIs to ensure quality, improve our products or services, and verify your compliance with these Terms.
+
+3.6    If You provide feedback or suggestions about Orange APIs, Orange and Orange Affiliates may use such information without obligation to You.
+
+4.    THE API CLIENTS
+
+4.1    Orange APIs are offered to You to enhance the API Clients. Orange and Orange Affiliates reserve the right to investigate any API Client for compliance with these Terms. Such investigation may involve Orange and/or Orange Affiliates accessing and using the API Client. You consent to any such investigation. Orange and/or any Orange Affiliate may suspend all or part of the access to Orange APIs by You, the Business Customers or the API Client without notice if we reasonably believe that You or your Business Customers (when You act as an aggregator or a distributor of Orange APIs) are in breach of these Terms.
+
+4.2    If your API Client requires access to Orange or an Orange Affiliate’s network, such API Client must not in Orange’s reasonable judgement excessively use or unduly burden network capacity or bandwidth.
+
+4.3    You will use reasonable endeavours to protect user information collected by the API Client, including personally identifiable information (PII), from unauthorised access or use and will promptly report to your users any unauthorised access or use of such information.
+
+4.4    Orange and Orange Affiliates do not acquire ownership of the API Clients, and by using Orange APIs, You do not acquire ownership of any rights in Orange APIs or the content that is accessed through Orange APIs.
+
+5.    RESTRICTIONS
+
+5.1    When using Orange APIs, the following restrictions apply:
+
+(a)    You will not sublicense an Orange API for use by a third party. Accordingly, You or your Business Customers (when You act as an aggregator or a distributor of Orange APIs) will not create an API Client that functions substantially the same as an Orange API and offer it for use by a third party.
+(b)    You and your Business Customers (when You act as an aggregator or a distributor of Orange APIs) will not perform an action with the intent of introducing to Orange or Orange Affiliate products or services any viruses, worms, defects, Trojan horses, malware or any items of a destructive nature.
+(c)    Except to the extent this restriction is expressly prohibited by applicable law, You and your Business Customers (when You act as an aggregator or a distributor of Orange APIs) will not reverse engineer or attempt to extract the source code from any Orange API or any related software.
+
+6.     CONTENT
+
+6.1    Orange APIs may grant access to some third-party content (such as text, images, drawings, videos, audio, or software). This content is the sole responsibility of the person that makes it available, and it may be subject to intellectual property rights, and, if so, You may not use it unless You are licensed to do so by the owner of that content or are otherwise permitted by law. Your access to the content provided by the Orange API may be restricted, limited, or filtered in accordance with local laws, regulations, and policies.
+
+6.2    Some of Orange APIs allow the submission of content, and except as expressly provided in these Terms, Orange and Orange Affiliates do not acquire any ownership of any intellectual property rights that You or your End Users hold in the content that You submit to Orange APIs through the API Client. By submitting, posting or displaying content to or from the Orange APIs through the API Client, You give Orange and Orange Affiliates a perpetual, irrevocable, worldwide, royalty-free, and non-exclusive license to reproduce, adapt, modify, translate, publish, publicly perform, publicly display and distribute such content. However, Orange and Orange Affiliates will only use such content for the purpose of enabling Orange and Orange Affiliates to provide the Orange APIs. You agree that this license includes a right for Orange and the orange Affiliates to make such content available to other companies, organizations or individuals with whom Orange and Orange Affiliates have relationships for the provision of syndicated services, and to use such content in connection with the provision of those services. Before You submit content to the Orange APIs through the API Client, ensure that You have the necessary rights (including the necessary rights from your End Users) to grant Orange and Orange Affiliates the license.
+
+6.3    When an End User's non-public content is obtained through the Orange APIs, You may not expose that content to other End Users or to third parties without explicit opt-in consent from that End User.
+
+6.4    Unless expressly permitted by the content owner or by applicable law, You agree that You will not, and will not permit your End Users or the End Users of your Business Customers to, do the following with content returned from the APIs:
+(a)    Scrape, build databases or otherwise create permanent copies of such content, or keep cached copies longer than permitted by the cache header;
+(b)    Copy, translate, modify, create a derivative work of, sell, lease, lend, convey, distribute, publicly display or sublicense to any third party;
+(c)    Misrepresent the source or ownership; or
+(d)    Remove, obscure, or alter any copyright, trademark or other proprietary rights notices, falsify or delete any author attributions, legal notices or other labels of the origin or source of material.
+
+7.    FEES
+
+Some Orange APIs may require the payment of a Fee. If so, this will be specified in the Specific Terms for that Orange API and collected by the Orange provider of that Orange API (Orange or an Orange Affiliate, as mentioned in each Specified Terms). Orange Developer is not and will not be part of the process of payment and/or invoicing of any Fee and therefore is not and will not be liable for any payment or collection.
+
+8.    RESPONSIBILITY - WARRANTIES
+
+8.1    You represent and warrant to Orange and Orange Affiliates that:
+
+(a)    You have the right and authority to enter into these Terms and to fully perform your obligations under these Terms;
+
+(b)    The API Client is authorised for distribution, sale and use in each of the territories where You make it available and complies with the laws and regulations of those territories;
+
+(c)    The API Client and services linked to it do not violate or infringe any copyright, trademark, patent or other intellectual or contractual rights of any person or entity;
+
+(d)    The API Client does not contain any offensive, obscene, or other materials or any content that is prohibited or restricted under local regulations or laws of any territory where You make it available. For the avoidance of doubt, You represent and warrant that the API Client does not (i) depict explicit sexual activity; (ii) depict or endorse acts that cause or are intended to cause excessive pain or suffering; (iii) promote or endorse the misuse of alcohol, tobacco, illegal drugs or other addictive substances; (iv) promote intolerance or discrimination based on racial, political, ethnic, religious, gender or sexuality; (v) promote invasion of rights or privacy; (vi) promote unlawful gambling or (vii) promote illegal activity.
+
+8.2    The API Client and any data collection conducted through it shall protect the privacy and legal rights of End Users in particular in terms of consent from the End Users regarding data collection and process purposes. In addition, any personal data collected shall be used solely for the purpose of providing your API Client or the API Client of your Business Customers (when You act as an aggregator or a distributor of Orange APIs). You must also protect such data from unauthorized access. You must comply with (i) the provisions as set forth in Annex A of these General Terms and (ii) all applicable data protection laws and rules.
+
+8.3    You warrant not to use personal data of End Users for any purpose other than the purpose for which they have been communicated, as set out in the Specific Terms of the relevant Orange API.
+
+8.4    You represent and warrant not to engage in any activity, including the development, edition or distribution of any API Client that interferes with, disrupts, damages, or accesses in an unauthorised manner the networks, devices, servers, or any other components or services used for the distribution and uses of the API Client.
+
+8.5    You will be solely responsible for ensuring the API Client is safe and free of defects in operation and conception. You will also be solely responsible for any documentation and End User support and warranty of the API Client.
+
+8.6    Orange and Orange Affiliates shall have no responsibility or liability for the installation or use of the API Client by an End User.
+
+8.7    You shall indemnify and hold Orange and Orange Affiliates harmless against any and all claims, suits, losses, damages arising from or attributable to the API Client and/or the use of the API Client by any End User and/or attributable to your failure to perform any of your obligations under these Terms.
+
+8.8    You acknowledge and agree that (i) neither Orange nor any other Orange Affiliate shall be liable to You and/or your Business Customers in respect of any obligations owed to You by an Orange Affiliate pursuant to these Terms, and (ii) You shall only be liable to Orange or the Orange Affiliate whose API(s) You have used. For the avoidance of doubt, there shall be no joint and several liability between Orange and any Orange Affiliate, and amongst Orange Affiliates.
+
+8.9    Neither party will be liable for failure to perform any obligation under these Terms to the extent such failure is caused by a force majeure event. This includes acts of God, natural disasters, war, civil disturbance, action by governmental entity, strike and other causes beyond the party’s reasonable control. The party affected by the force majeure event will provide notice to the other party within a commercially reasonable time and will resume performance as soon as is reasonably practicable.
+
+9.    MODIFICATION OF THE ORANGE DEVELOPER SERVICE
+
+9.1    Orange (or an Orange Affiliate) may at any time and at its own discretion discontinue, modify or upgrade any feature, design or functioning of the Orange Developer portals and/or gateways (herein after the “Modifications”). The Modifications may impact your usage of:
+- the Orange Developer portals, including the API catalogue allowing access to the information provided by the API providers to facilitate the integration of their API,
+- the gateways to Orange APIs, including authorization and access protocols (including but not limited to Oauth2).
+
+9.2    The Modifications may require you to take actions at your own expense and Orange shall not be liable to You for any consequences of such Modifications, whether direct or indirect.
+
+9.3    APIs proposed by API providers which are covered by their own specific terms and conditions are excluded from these Modifications.
+
+9.4    The Modification period (“Modification Period”) will start when the first Modification notifications are sent to You via the e-mail address associated with your Orange Developer account and will last for a period defined in the notifications, so as to allow You to adapt to the Modifications. During the Modification Period, the Orange Developer portals and/or gateways will remain unmodified. At the end of the Modification Period, the Modifications will be effective.
+
+10.    TERM AND TERMINATION
+
+10.1    These Terms between You and Orange and/or an Orange Affiliate shall commence upon the creation of your Orange Developer account and shall continue for so long as You are using an Orange API, unless terminated in accordance with these Terms.
+
+10.2    Each Orange Affiliate and Orange may, at any time, immediately terminate the relevant Terms if:
+
+(a)    You have breached any provision of the relevant Terms; or
+
+(b)    Orange or an Orange Affiliate is required to do so by law; or
+
+(c)    You go into liquidation (in which case the termination will be effective from the date of the judicial pronouncement of the liquidation (or any analogous insolvency process in the relevant jurisdiction); or
+
+(d)    You decline to accept any new terms or version of these Terms.
+
+10.3    Orange or any Orange Affiliate may terminate these Terms in respect of any Orange API for any reason upon thirty (30) days’ written notice.
+
+10.4    Termination of the Terms between You and Orange or any Orange Affiliate will not automatically terminate any other Terms between You and any other Orange Affiliate or between You and Orange.
+
+10.5    Upon termination for any reason, You agree to cease without delay all use of Orange APIs, together with Orange and Orange Affiliates’ materials, services and/or Private Keys in relation to these Orange APIs.
+
+10.6    Any provisions which are either expressed to survive termination of these Terms or, from their nature or context, are apparently intended to survive termination of these Terms shall remain in full force and effect notwithstanding termination of these Terms.
+
+11.    CHANGES TO TERMS
+
+Orange may change these Terms at any time and when it does so, will inform You by email and on the Orange Developer Website. Please regularly log in on the Orange Developer Website for any changes to the Terms. Your continued use of Orange APIs will be deemed to be acceptance of any changes to the Terms notified by Orange. If You do not accept any changes to the Terms, You must cease using the relevant Orange APIs immediately. Nothing in this section shall affect Orange or an Orange Affiliate’s rights under Sections 10 or 13.
+
+12.    CONFIDENTIALITY
+
+Each party agrees that at all times during the term of these Terms, and for five (5) years thereafter, the recipient of Confidential Information under these Terms will hold in confidence, and will not use or disclose to any third party (other than in response to lawful requests from law enforcement authorities or contractors to the extent they are performing the receiving party’s obligations under these Terms subject to confidentiality obligations that are at least as protective as those contained in this Section 12), any Confidential Information.
+
+13.    BINDING AGREEMENT
+
+13.1    You agree that (i) your acceptance expressed electronically, including without limitation by checking a box or clicking on an “agree” or similar button, (ii) any data collected from You using your Private Keys, and (iii) any data notified to You via the Orange Developer Website and/or any other related electronics means such as email, are processed and stored by Orange on its platform and will be considered binding and definitive. You expressly accept that data stored by Orange on its platform shall constitute definitive evidence of proof.
+
+13.2    Orange will use reasonable security and other measures to protect data (including Personal Data) provided in the performance of these Terms from unauthorized access, use, disclosure, alteration and destruction.
+
+14.    BRAND FEATURES, ATTRIBUTION, PUBLICITY
+
+14.1    "Brand Features" is defined as the trade names, trademarks, service marks, logos, domain names, and other distinctive brand features of each party. Except where expressly stated, these Terms do not grant either party any right, title, or interest in or to the other party's Brand Features. All use by You of Orange's Brand Features (including any goodwill associated therewith) will inure to the benefit of Orange.
+
+14.2    You agree to display any attribution(s) required by Orange in the form described in the Orange APIs Brand Association Guideline. Orange hereby grants to You a nontransferable, non-sublicenseable, nonexclusive license during the term to display Orange's Brand Features for the purpose of promoting or advertising that You use the Orange APIs. You must only use the Orange Brand Features in accordance with these terms and for the purpose of fulfilling your obligations under this Section. In using Orange's Brand Features, You must follow the Orange APIs Brand Association Guideline at https://developer.orange.com/tools/brand-guidelines. You understand and agree that Orange has the sole discretion to determine whether your attribution(s) and use of Orange's Brand Features are in accordance with the above requirements and guidelines.
+
+14.3    You may not issue any public statements regarding these Terms or Orange APIs without Orange’s prior approval, which may be withheld in Orange’s sole discretion.
+
+14.4    Orange may issue, at any time and at its own discretion, a public statement or announcement relating to or communicate on your use or distribution of the Orange APIs without your prior approval and, therefore, You grant Orange a right to use your name or logo in any advertising or publicity for such purpose.
+
+15.    DISCLAIMER OF WARRANTIES, LIMITATION OF LIABILITY AND INDEMNIFICATION
+
+15.1    ORANGE AND EACH ORANGE AFFILIATE PROVIDE ORANGE APIs “AS-IS” AND “AS-AVAILABLE”. YOUR USE OF ORANGE APIs IS SOLELY AT YOUR OWN RISK, AND YOU ARE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR INFORMATION SYSTEM, SERVICES PLATFORM OR ANY DEVICE OR LOSS OF DATA THAT RESULTS FROM SUCH USE. TO THE GREATEST EXTENT PERMITTED BY LAW, ORANGE AND EACH ORANGE AFFILIATE, EXCLUDE ANY IMPLIED WARRANTIES OR CONDITIONS, INCLUDING THOSE OF PRODUCT LIABILITY, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, WORKMANLIKE EFFORT, AND NON-INFRINGEMENT, RELATING TO ORANGE APIs. WITHOUT LIMITING ANY OF THE FOREGOING, ORANGE AND EACH ORANGE AFFILIATE EXPRESSLY DISCLAIMS ANY WARRANTIES THAT ACCESS TO OR USE OF ORANGE APIS WILL BE UNINTERRUPTED OR ERROR FREE.
+
+15.2    UNDER THESE TERMS, YOU CAN RECOVER FROM ORANGE AND ORANGE AFFILIATES ONLY DIRECT DAMAGES THAT ARE LIMITED, IN CASE YOU PAY FEES TO ORANGE AND ORANGE AFFILIATES TO USE THE ORANGE APIs, TO SUCH FEES YOU PAID IN THE SIX (6) MONTHS IMMEDIATELY PRIOR TO THE EVENT GIVING RISE TO THE CLAIM. YOU EXPRESSLY ACKNOWLEDGE THAT ORANGE AND ORANGE AFFILIATES SHALL NOT BE LIABLE TO YOU UNDER ANY THEORY OF LIABILITY FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE OR EXEMPLARY DAMAGES OR LOST PROFITS THAT MAY BE INCURRED BY YOU, INCLUDING ANY LOSS OF DATA, WHETHER OR NOT ORANGE, ORANGE AFFILIATES OR THEIR REPRESENTATIVES HAVE BEEN ADVISED OF OR SHOULD HAVE BEEN AWARE OF THE POSSIBILITY OF ANY SUCH LOSSES ARISING.
+
+15.3    To the maximum extent permitted by law, You agree to defend, indemnify and hold harmless Orange, Orange Affiliates and their respective directors, officers, employees, and agents from and against any and all third party claims, actions, suits or proceedings, as well as any and all liabilities, assessments, losses, damages, costs and expenses (including reasonable attorneys’ fees) resulting from or arising out of: (i) your breach of these Terms; (ii) your infringement or violation of any copyright, trademark, trade secret, trade dress, patent or other intellectual property right, or defamation of any person or violation of their rights of publicity or privacy; (iii) your breach of or non-compliance to any data protection and/or privacy laws or rules and (iv) misuse of Orange APIs by a third party where such misuse was made possible by your failure to take reasonable measures to protect your Private Keys.
+
+16.    GOVERNING LAW AND DISPUTE RESOLUTION
+
+16.1    Except where prohibited by applicable law, the Terms between You and Orange shall be governed by the laws of France, without regard to its conflict of law provisions. Any dispute, controversy or claim arising out of or in connection with the Terms between You and Orange, or the breach, termination or invalidity thereof, shall be settled exclusively by the courts of Paris, France.
+
+16.2    Except where prohibited by applicable law, the Terms between You and an Orange Affiliate shall be governed by the laws of the territory in which Orange Affiliate is registered, as set forth in each Specific Terms, without regard to its conflict of law provisions. Any dispute, controversy or claim arising out of or in connection with the Terms between You and an Orange Affiliate, or the breach, termination or invalidity thereof, shall be settled exclusively by the courts of the city in which the registered office or head office of Orange Affiliate is located, as set forth in each Specific Terms.
+
+17.    MISCELLANEOUS
+
+17.1    These Terms constitute the entire agreement between (i) You and Orange (ii) You and each Orange Affiliate, in respect of your use of Orange APIs.
+
+17.2    The parties acknowledge that other than the contractual relationship established by these Terms, these Terms will not be construed as creating any other relationship, or agency, partnership, employment, joint venture, fiduciary duty, or franchise, or any other form of legal association between You and Orange and/or an Orange Affiliate. Other than as expressly stated in these Terms, these Terms are not for the benefit of third parties.
+
+17.3    You agree that if Orange or an Orange Affiliate does not exercise or enforce any legal right or remedy which is contained in these Terms (or which Orange or Orange Affiliate has the benefit of under any applicable law), this will not be taken to be a formal waiver of Orange's or Orange Affiliate’s rights and that those rights or remedies will still be available to Orange and/or Orange Affiliate.
+
+17.4    If any court of law, having the jurisdiction to decide on this matter, rules that any provision of these Terms is invalid, then that provision will be removed from these Terms without affecting the rest of these Terms. The remaining provisions of these Terms will continue to be valid and enforceable.
+
+17.5    Orange and each Orange Affiliate will be entitled to sub-contract without your consent any of their obligations to a third-party sub-contractor. Orange or the relevant Orange Affiliate will be responsible for the acts and omissions of any sub-contractor.
+
+17.6    The rights granted in these Terms may not be assigned or transferred by You without the prior written approval of Orange or the relevant Orange Affiliate. You shall not be permitted to delegate your responsibilities or obligations under these Terms without the prior written approval of Orange or the relevant Orange Affiliate.
+
+17.7    Orange and each Orange Affiliate shall be entitled to assign or transfer or otherwise dispose of these Terms (or part thereof) to any company part of the Orange group, in their absolute discretion.
+
+© Orange 2022
+
+
+
+APPENDIX A
+
+PERSONAL DATA PROTECTION
+
+
+1    General Provision
+
+1.1    When processing Personal Data provided by Orange and/or Orange Affiliates under any Specific Terms, You are and shall act (i) either as Data Processor of Orange or Orange Affiliates or (ii) as separate Data Controller of your own process. Your Business Customers (when You act as an aggregator or a distributor of Orange APIs) shall act as a separate Data Controller.
+Orange or Orange Affiliates remains Data Controller in providing the services made available through the APIs.
+
+1.2    You shall in all respects comply with the written instruction provided by Orange or Orange Affiliates regarding data protection in order to ensure that Orange and Orange Affiliates comply with the European Directive 95/46/EC on Personal Data Protection and the European Directive 2002/58/EC on Privacy and Electronic Communications, as amended by Directive 2009/136/EC, such as implemented in their national law and any applicable regulation concerning data protection. Orange Affiliates that do not have their headquarters in the European Union are entitled to modify, change or adapt the terms and conditions of these General Terms by adding, in the Specific Terms, specific provisions pursuant to the regulation of their own jurisdiction.
+
+1.3    Accordingly, You and your Business Customers (when You act as an aggregator or a distributor of Orange APIs) shall take necessary technical and organizational security measures aimed to protect Personal Data against accidental or unlawful destruction, loss, alteration, unauthorized disclosure or access, such measures shall be in compliance with (i) the provisions of these General Terms (ii) the applicable data protection laws and rules.
+
+1.4    You shall not sub-process the Personal Data without Orange’s or Orange Affiliates’ prior written consent. Any Authorized Sub-processor shall act under your control and liability for the purpose of the Terms.
+
+1.5    You agree that the Personal Data provided by Orange or Orange Affiliates to You and/or your Business Customers (when You act as an aggregator or a distributor of Orange APIs) within the frame of and for the purposes of the Terms shall remain under the ownership of Orange or Orange Affiliates. You and/or your Business Customers (when You act as an aggregator or a distributor of Orange APIs) shall never become and act as if the owner of the Personal Data.
+
+1.6    Any non-compliance with the provisions of this Annex A or any provisions of the relevant Specific Terms with respect to Personal Data may constitute a material breach of the Terms. Therefore, Orange may (i) either suspend the Terms until You fully comply with the provisions of this Annex A or any provisions of the relevant Specific Terms or (ii) terminate, under section 9 of these General terms, the Terms if You do not fully comply, within a reasonable time, with the provisions of this Annex A or any provisions of the relevant Specific Terms.
+
+2    Your Specific Obligations
+
+2.1    You shall process, and require from your Business Customers (when You act as an aggregator or a distributor of Orange APIs) and your Authorized Sub-processors (if any), to process Personal Data and perform each of their obligations in compliance with the Terms, the applicable data protection laws and rules and, if any, in accordance with the aforementioned specific terms and conditions related to Personal Data transfer and process, and shall comply with the terms of the sections below.
+
+2.2    You, your Business Customers (when You act as an aggregator or a distributor of Orange APIs) and your Authorized Sub-processor (if any) shall:
+a.    not use Personal Data for the purposes other than providing the services made available through the API Client;
+b.    except as may be expressly stated or provided in the Terms, not disclose the Personal Data to any third party, such as Business Customers and subcontractors (other than Authorized Sub-processors) without the prior consent of Orange or Orange Affiliates;
+c.    make sure that all of your employees, subcontractors (including Authorized Sub-processors) and independent contractors providing services for the purposes of your API Client are aware of all of these obligations; and make sure that such obligations will be strictly applied, in particular regarding the strict confidentiality and integrity of the Personal Data which they would gain access to for the purpose of the Terms;
+d.    cause any third parties (including Authorized Sub-processors and Business Customers) to comply with the applicable data protection laws and rules, and all measures and related specifications agreed between Orange or Orange Affiliates, on the one hand, and You, on the other hand;
+e.    modify and adapt their processes as necessary to make sure that Orange and Orange Affiliates could abide by the applicable data protection laws and rules and, as the case may be, with mandatory decisions of any supervisory authority or jurisdictions, applicable to the Data Controller. Such modification shall be implemented by You, your Business Customers (when You act as an aggregator or a distributor of Orange APIs) and your Authorized Sub-processor (if any);
+f.    notify Orange or Orange Affiliates any request or notice received from an End User (or “data subject”), exercising its rights under its applicable data protection laws and rules,
+g.    reasonably cooperate and provide Orange or Orange Affiliates with any necessary information which would enable Orange or Orange Affiliates to properly respond to any request or notice received from an End User (or “data subject”) exercising its rights under the applicable data protection laws and rules.
+h.    formally inform, without delay, Orange or Orange Affiliates in writing about any event which You, your Business Customers (when You act as an aggregator or a distributor of Orange APIs) and your Authorized Sub-processor (if any) reasonably believes to be a security incident or to have the features of a security incident; and
+i.    identify a specific point of contact (“PoC”) within its organization authorized to respond to the enquiries concerning Personal Data processing, and will cooperate in good faith with Orange and/or Orange Affiliates to respond all such enquiries within a reasonable time.
+j.    promptly destroy or return to Orange all Personal Data provided by Orange or Orange Affiliates to You and/or your Business Customers (when You act as an aggregator or a distributor of Orange APIs) within the frame of and for the purposes of the Terms in case of termination for any reason whatsoever of such Terms, and provide at Orange’s request, a statement confirming the completion of such data destruction or return. Any subsequent detention must be justified to Orange or Orange Affiliates.
+
+2.3    In case when either Orange or Orange Affiliates or You detect any security incident or Orange or Orange Affiliates requires skilled security experts from You to investigate, address or resolve such an incident, You shall make the skilled security experts and relevant resources available for analysis as well as intervention, mitigation and/or resolution in support of that emergency.
+
+2.4    You acknowledge that damages would not be an adequate remedy in the event of breach by You of the provisions of this Annex A. Accordingly, it is agreed that Orange or Orange Affiliates shall be entitled, without proof of special damages, to seek an injunction or other interim remedy for any threatened or actual breach of this Annex A, without prejudice to any other rights and remedies which Orange or Orange Affiliates may have.
+
+2.5    With respect to Orange and the Orange Affiliates that have their headquarters in the European Union, You undertake that:
+a.    if your data center is located in the territory of the European Union, (a) your data center will remain located in the territory of the European Union, (b) no Personal Data will be sent or processed outside the territory of the European Union, and (c) more generally no Personal Data will be opened to employees, subcontractors (including Sub-processors), providers and/or Business Customers located outside of the territory of the European Union; or
+b.    if any Personal Data will be sent, stored, processed or accessible OUTSIDE the territory of the European Union by You or your Business Customers (when You act as an aggregator or a distributor of Orange APIs), (a) You inform, promptly and clearly, Orange or Orange Affiliates that any Personal Data will be sent, stored, processed or accessible outside the territory of the European Union, (b) You, your Business Customers (when You act as an aggregator or a distributor of Orange APIs) and your Authorized Sub-processor (if any) comply and will comply with the appropriate Standard Contractual Clauses issued by the European Commission for :
+- the transfer of Personal Data to Processors Established in Third Countries, or
+- the transfer of Personal Data to Controller Established in Third Countries.

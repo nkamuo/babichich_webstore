@@ -1,0 +1,8 @@
+{% extends '@SyliusShop/Form/theme.html.twig' %}
+
+{% block _bitbag_elasticsearch_search_box_query_widget %}
+    <div class="input-group mb-3">
+        {{- form_widget(form) -}}
+        <button type="submit" id="bitbag_elasticsearch_search_box_search" class="btn btn-outline-primary">{{ 'sylius.ui.search'|trans }}</button>
+    </div>
+{% endblock %}

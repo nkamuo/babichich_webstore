@@ -1,0 +1,20 @@
+{% import '@SyliusUi/Macro/flags.html.twig' as flags %}
+
+<h1 class="display-4 fw-bold">
+    <i class="circular cart icon"></i>
+    <div class="content">
+        {{ 'sylius.ui.summary_of_your_order'|trans }}
+        <div class="h5 text-muted">
+            {# <div class="row"> #}
+            <div class="hstack gap-3">
+                <div class="col" id="sylius-order-currency-code" {{ sylius_test_html_attribute('order-currency-code') }}>
+                    {{ order.currencyCode }}
+                </div>
+                <div class="vr"></div>
+                <div class="col" id="sylius-order-locale-name" {{ sylius_test_html_attribute('order-locale-name') }}>
+                    {{ flags.fromLocaleCode(sylius.localeCode) }}{{ sylius.localeCode|sylius_locale_name }}
+                </div>
+            </div>
+        </div>
+    </div>
+</h1>

@@ -1,0 +1,112 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% set order = resource %}
+
+
+{% block stylesheets %}
+	{{parent()}}
+
+	<style>
+		.justify-space-between {
+			display: flex;
+			justify-content: space-between;
+		}
+	</style>
+{% endblock %}
+
+{% block title %}
+	{{ 'app.ui.purchase_order'|trans ~' #'~ order.code }}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+	<div class="ui stackable two column grid">
+		<div class="column">
+			<h1 class="ui header">
+				<i class="circular pencil icon"></i>
+				<div class="content">
+					{{ order.code}}
+					<div class="sub header">
+						<span>{{ 'app.ui.purchase_order' |trans }}</span>
+					</div>
+				</div>
+			</h1>
+			<div>
+				{% include '@SyliusAdmin/Crud/Index/_breadcrumb.html.twig' %}
+			</div>
+		</div>
+		<div class="middle aligned column"></div>
+	</div>
+
+
+	<div class="ui segment">
+		<table class="ui celled table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Code</th>
+					<th>State</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ order.id }}</td>
+					<td>{{ order.code }}</td>
+					<td>{{ order.state }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div class="ui segment">
+		<h2>{{ 'sylius.ui.items' |trans }}</h2>
+
+		<table class="ui celled table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Stockable</th>
+					<th>Quantity</th>
+					<th>State</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in order.items %}
+					<tr>
+						<td>{{ item.id }}</td>
+						<td>{{ item.stockable }}</td>
+						<td>{{ item.quantity }}</td>
+						<td>{{ item.state}}</td>
+						<td>
+							<button class="ui button">
+								Proceed
+							</button>
+						</td>
+
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="justify-space-between">
+		<div class="ui buttons">
+			<a href="{{ path('app_admin/stock_purchase_order_index') }}" class="ui button">
+				<i class="arrow left icon"></i>
+				back to list</a>
+			<a href="{{ path('app_admin/stock_purchase_order_update', {'id': order.id}) }}" class="ui button">
+				<i class="pencil icon"></i>
+				{{'sylius.ui.edit'|trans}}
+			</a>
+			{{ include('admin/stock/purchase_order/_delete_form.html.twig') }}
+		</div>
+
+
+		<div class="ui buttons">
+			{{ include('admin/stock/purchase_order/_nextOperation.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<li>
+	<a class="text_14" href="{{ path(route, {'slug': slug, 'order_by': 'sold_units', 'sort': 'desc'}|merge(queryParameters)) }}">{{ 'sylius.ui.bestsellers'|trans }}</a>
+</li>
+<li>
+	<a class="text_14" href="{{ path(route, {'slug': slug, 'order_by': 'product_created_at', 'sort': 'desc'}|merge(queryParameters)) }}">{{ 'sylius.ui.newest'|trans }}</a>
+</li>
+<li>
+	<a class="text_14" href="{{ path(route, {'slug': slug, 'order_by': 'product_created_at', 'sort': 'asc'}|merge(queryParameters)) }}">{{ 'sylius.ui.oldest'|trans }}</a>
+</li>
+<li>
+	<a class="text_14" href="{{ path(route, {'slug': slug, 'order_by': 'price', 'sort': 'desc'}|merge(queryParameters)) }}">{{ 'sylius.ui.most_expensive'|trans }}</a>
+</li>
+<li>
+	<a class="text_14" href="{{ path(route, {'slug': slug, 'order_by': 'price', 'sort': 'asc'}|merge(queryParameters)) }}">{{ 'sylius.ui.cheapest'|trans }}</a>
+</li>

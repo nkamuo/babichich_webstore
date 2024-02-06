@@ -1,0 +1,158 @@
+{% extends '@SyliusShop/bisum-layout.html.twig' %}
+
+{% block stylesheets %}
+	{{parent()}}
+
+	<style>:root
+	{
+		--primary-color: #00234D;
+		--secondary-color: #F76B6A;
+
+		--btn-primary-border-radius: 0.25rem;
+		--btn-primary-color: #fff;
+		--btn-primary-background-color: #00234D;
+		--btn-primary-border-color: #00234D;
+		--btn-primary-hover-color: #fff;
+		--btn-primary-background-hover-color: #00234D;
+		--btn-primary-border-hover-color: #00234D;
+		--btn-primary-font-weight: 500;
+
+		--btn-secondary-border-radius: 0.25rem;
+		--btn-secondary-color: #00234D;
+		--btn-secondary-background-color: transparent;
+		--btn-secondary-border-color: #00234D;
+		--btn-secondary-hover-color: #fff;
+		--btn-secondary-background-hover-color: #00234D;
+		--btn-secondary-border-hover-color: #00234D;
+		--btn-secondary-font-weight: 500;
+
+		--heading-color: #000;
+		--heading-font-family: 'Poppins', sans-serif;
+		--heading-font-weight: 700;
+
+		--title-color: #000;
+		--title-font-family: 'Poppins', sans-serif;
+		--title-font-weight: 400;
+
+		--body-color: #000;
+		--body-background-color: #fff;
+		--body-font-family: 'Poppins', sans-serif;
+		--body-font-size: 14px;
+		--body-font-weight: 400;
+
+		--section-heading-color: #000;
+		--section-heading-font-family: 'Poppins', sans-serif;
+		--section-heading-font-size: 48px;
+		--section-heading-font-weight: 600;
+
+		--section-subheading-color: #000;
+		--section-subheading-font-family: 'Poppins', sans-serif;
+		--section-subheading-font-size: 16px;
+		--section-subheading-font-weight: 400;
+	}
+</style>{% endblock %}{% block content %}
+{% include '@SyliusShop/Product/Show/_breadcrumb.html.twig' %}
+{% set productPreviewId = 'main-product-' ~ product.id ~ '-preview' %}
+	{% set cartFormId = productPreviewId ~'-' ~ 'sylius-product-adding-to-cart' %}
+<main id="MainContent" class="content-for-layout px-6">
+	<div class="product-page mt-100">
+		<div class="container">
+			<div id="{{ productPreviewId }}">
+				{% include '@SyliusShop/Product/_preview.html.twig' %}
+			</div>
+
+			{{ sonata_block_render_event('sylius.shop.product.show.before_tabs', {'product': product}) }}
+
+
+			<div class="product-tab-section mt-100" data-aos="fade-up" data-aos-duration="700">
+				<div class="container">
+					{% include '@SyliusShop/Product/Show/_tabs.html.twig' %}
+				</div>
+			</div>
+
+			{{ sonata_block_render_event('sylius.shop.product.show.before_associations', {'product': product}) }}
+		</div>
+	</div>
+
+	<div class="product-tab-section mt-100" data-aos="fade-up" data-aos-duration="700">
+		<div class="container">
+			{% include '@SyliusShop/Product/Show/_associations.html.twig' %}
+		</div>
+	</div>
+
+</main>
+
+
+<script type="module">
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+
+const productShow = createApp({
+setup() {
+
+	// >> CART FEATURS
+
+const cartQuantity = ref(1);
+
+function increaseCartQuantity(){
+	if(cartQuantity.value < 1000)
+	cartQuantity.value ++;
+}
+
+
+function decreaseCartQuantity(){
+	if(cartQuantity.value > 1)
+	cartQuantity.value --;
+}
+
+async function addToCart(evt) {
+console.log('EVENT', evt);
+evt ?. preventDefault();
+try {
+isAddingToCart.value = true
+const form = document.getElementById('{{ cartFormId }}');
+console.log('EVT: ', evt, "FORM: ", form)
+const formData = new FormData(form);
+  const json = JSON.stringify(Object.fromEntries(formData));
+const response = await fetch(form.action, {
+method: 'POST',
+headers: {
+// 'Content-Type': 'application/json'
+'Accepts': 'application/json'
+},
+// body: json
+body: formData
+})
+const data = await response.json()
+console.log(data)
+} catch (err) {
+console.log(err)
+} finally {
+isAddingToCart.value = false
+}
+}
+const isAddingToCart = ref(false);
+const product = ref({{ product|json_encode|raw }})
+
+// << CART FEATURS
+
+return {
+// >> CART FEATURS
+product,
+cartQuantity,
+addToCart,
+isAddingToCart,
+increaseCartQuantity,
+decreaseCartQuantity,
+}
+}
+}).mount('#{{productPreviewId}}')
+</script>
+
+
+
+{#
+<script type="module">
+import {createApp, h} from 'vue'
+</script>
+#}{% endblock %}

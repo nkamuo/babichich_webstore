@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('app_admin/stock_purchase_order_apply_transition', {'order': purchase_order.id, 'transition': 'approve'}) }}" onsubmit="return confirm('Are you sure you want to confirm this order has been received and shoudl reflect in stock?');">
+	<input type="hidden" name="_method" value="PUT">
+	<input type="hidden" name="_token" value="{{ csrf_token('confirm' ~ purchase_order.id) }}">
+	<button class="ui labeled icon primary button">
+		<i class="proceed icon"></i>
+		{{'sylius.ui.confirm'|trans}}
+	</button>
+</form>

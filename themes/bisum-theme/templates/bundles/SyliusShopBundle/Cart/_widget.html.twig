@@ -1,0 +1,12 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+{# 
+<div id="sylius-cart-button" class="ui circular cart button" {{ sylius_test_html_attribute('cart-button') }}>
+    {{ sylius_template_event('sylius.shop.cart.widget.button', {'cart': cart}) }}
+</div>
+<div class="ui large flowing cart hidden popup">
+    {{ sylius_template_event('sylius.shop.cart.widget.popup', {'cart': cart}) }}
+</div> #}
+
+
+{% include '@SyliusShop/Cart/Widget/_button.html.twig' %}
+{% include '@SyliusShop/Cart/Widget/_popup.html.twig' %}

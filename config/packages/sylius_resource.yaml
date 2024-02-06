@@ -1,0 +1,17 @@
+# config/packages/sylius_resource.yaml
+sylius_resource:
+    mapping:
+        paths:
+            - "%kernel.project_dir%/src/Entity"
+
+    resources:
+        app.supplier:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\Inventory\Supplier
+
+        app.purchase_order:
+            driver: doctrine/orm
+            classes:
+                model: App\Entity\Inventory\PurchaseOrder
+                form: App\Form\Inventory\PurchaseOrderType

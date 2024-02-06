@@ -1,0 +1,17 @@
+{
+    "name": "nkamuo/bisum-theme",
+    "description": "Bisum theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Callistus Nkamuo",
+            "email": "callistusnkamuo@gmail.com"
+        }
+    ],
+    "extra": {
+        "sylius-theme": {
+            "title": "Bisum theme",
+            "parents-r": [ "sylius/bootstrap-theme" ]
+        }
+    }
+}

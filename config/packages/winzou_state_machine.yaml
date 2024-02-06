@@ -1,0 +1,112 @@
+# app/config/config.yml
+
+winzou_state_machine:
+  app_stock_puchase_order:
+    class: App\Entity\Inventory\PurchaseOrder # class of your domain object
+    property_path: state # property of your object holding the actual state (default is "state")
+    graph: stock_state_transition # name of the graph (default is "default")
+    # list of all possible states:
+    states:
+      - draft
+      - pending
+      - intransit
+      - delivered
+      - cancelled
+      - completed
+    # list of all possible transitions:
+    transitions:
+      start:
+        from: [draft]
+        to: pending
+      dispatch:
+        from: [draft, pending]
+        to: intransit
+      receive:
+        from: [intransit]
+        to: delivered
+      approve:
+        from: [intransit, delivered]
+        to: completed
+      cancel:
+        from: [draft, pending, intransit, delivered]
+        to: cancelled
+      # publish:
+      #     from: [accepted]
+      #     to: published
+    # list of all callbacks
+    callbacks:
+      # will be called when testing a transition
+      guard:
+        guard_on_submitting:
+          on: "submit_changes" # call the callback on a specific transition
+          do: ["@my.awesome.service", "isSubmittable"] # will call the method of this Symfony service
+          args: ["object"] # arguments for the callback
+      # will be called before applying a transition
+      before:
+        # approve:
+        #   on: "completed"
+        #   do: ["@app.callback.purchase_order", "complete"]
+        #   args: ["object"]
+
+        approve:
+          # on: "completed"
+          do: ["@app.callback.purchase_order", "approve"]
+          args: ["object"]
+      # will be called after applying a transition
+      after:
+        email_on_publish:
+          on: "publish"
+          do: ["@my.awesome.service", "sendEmail"]
+          args: ["object", '"Email title"']
+
+          #
+
+  # app_stock_puchase_order:
+  #     class: My\Bundle\Entity\Article # class of your domain object
+  #     property_path: state            # property of your object holding the actual state (default is "state")
+  #     graph: simple                   # name of the graph (default is "default")
+  #     # list of all possible states:
+  #     states:
+  #         - new
+  #         - pending_review
+  #         - awaiting_changes
+  #         - accepted
+  #         - published
+  #         - rejected
+  #     # list of all possible transitions:
+  #     transitions:
+  #         create:
+  #             from: [new]
+  #             to: pending_review
+  #         ask_for_changes:
+  #             from: [pending_review, accepted]
+  #             to: awaiting_changes
+  #         submit_changes:
+  #             from: [awaiting_changes]
+  #             to: pending_review
+  #         approve:
+  #             from: [pending_review, rejected]
+  #             to: accepted
+  #         publish:
+  #             from: [accepted]
+  #             to: published
+  #     # list of all callbacks
+  #     callbacks:
+  #         # will be called when testing a transition
+  #         guard:
+  #             guard_on_submitting:
+  #                 on:   'submit_changes'                        # call the callback on a specific transition
+  #                 do:   ['@my.awesome.service', 'isSubmittable']  # will call the method of this Symfony service
+  #                 args: ['object']                              # arguments for the callback
+  #         # will be called before applying a transition
+  #         before:
+  #             update_reviewer:
+  #                 on:   'create'
+  #                 do:   ['@my.awesome.service', 'update']
+  #                 args: ['object']
+  #         # will be called after applying a transition
+  #         after:
+  #             email_on_publish:
+  #                 on:   'publish'
+  #                 do:   ['@my.awesome.service', 'sendEmail']
+  #                 args: ['object', '"Email title"']

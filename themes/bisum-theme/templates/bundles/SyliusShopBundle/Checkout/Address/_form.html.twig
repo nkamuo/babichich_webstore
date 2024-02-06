@@ -1,0 +1,11 @@
+{% set channel = order.channel %}
+{% if form.customer is defined %}
+	<div class="my-4">
+		{{ form_row(form.customer,) }}
+	</div>
+{% endif %}
+{% if channel.shippingAddressInCheckoutRequired %}
+	{% include '@SyliusShop/Checkout/Address/_shippingAddressRequired.html.twig' %}
+{% else %}
+	{% include '@SyliusShop/Checkout/Address/_billingAddressRequired.html.twig' %}
+{% endif %}

@@ -1,0 +1,48 @@
+{% extends '@SyliusShop/Checkout/layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}
+	{{ 'sylius.ui.address'|trans }}
+	|
+	{{ parent() }}
+{% endblock %}
+
+{% block steps %}
+	{{ sylius_template_event(['sylius.shop.checkout.address.steps', 'sylius.shop.checkout.steps'], _context) }}
+{% endblock %}
+
+{% block step %}
+	<div class="">
+		<div class="shipping-address-area">
+			<h2 class="shipping-address-heading pb-1">
+				{{ 'sylius.ui.address'|trans }}
+			</h2>
+			<div
+				class="shipping-address-form-wrapper">
+				{# <div class="content">
+									<div class="title">{{ 'sylius.ui.address'|trans }}</div>
+									<div class="description">{{ 'sylius.ui.fill_in_your_billing_and_shipping_addresses'|trans }}</div>
+								</div> #}
+				<div class="mt-4">
+					{{ sylius_template_event('sylius.shop.checkout.address.before_form', {'order': order}) }}
+
+					{{ form_start(form, {'action': path('sylius_shop_checkout_address'), 'attr': {'class': 'needs-validation r-shipping-address-form r-common-form', 'novalidate': 'novalidate'}}) }}
+					{{ form_errors(form) }}
+					<input type="hidden" name="_method" value="PUT"/>
+
+					{% include '@SyliusShop/Checkout/Address/_form.html.twig' %}
+					<div class="mb-3"></div>
+
+					{{ sylius_template_event('sylius.shop.checkout.address.before_navigation', {'order': order}) }}
+
+					{% include '@SyliusShop/Checkout/Address/_navigation.html.twig' %}
+
+					{{ form_row(form._token) }}
+					{{ form_end(form, {'render_rest': false}) }}
+					{# {{ form_end(form, {'render_rest': false}) }} #}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

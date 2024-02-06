@@ -1,0 +1,70 @@
+{% extends '@SyliusShop/bisum-layout.html.twig' %}
+
+{% form_theme searchForm '@SyliusUi/Form/theme.html.twig' %}
+
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+{% import '@SyliusUi/Macro/pagination.html.twig' as pagination %}
+
+{% block content %}
+
+	<main id="MainContent" class="content-for-layout">
+		<div class="collection mt-100">
+			<div class="container">
+
+				<h1 class="ui monster section dividing header">
+					{{ 'Search Results'|trans }}
+				</h1>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div id="filters-vertical" class="card">
+								<div class="card-header">
+									{{ 'sylius.ui.search'|trans }}
+								</div>
+								<div class="card-body">
+									{{ render(url('sylius_shop_partial_channel_menu_taxon_index', {'template': '@SyliusShop/Taxon/_verticalMenu.html.twig'})) }}
+								</div>
+								<div class="card-body">
+									{{ form_start(searchForm, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+									<div style="display: none;">
+										{{ form_row(searchForm.box) }}
+									</div>
+									<div class="mb-3">
+										{{ form_rest(searchForm) }}
+									</div>
+									<div class="mb-3">
+										<button type="submit" class="btn btn-primary btn-block">
+											<i class="bi bi-search"></i>
+											{{ 'sylius.ui.filter'|trans }}
+										</button>
+									</div>
+									{{ form_end(searchForm) }}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							{% if results|length > 0 %}
+								<div class="row row-cols-1 row-cols-md-3 g-4" id="search_results">
+									{% for product in results %}
+										<div class="col">
+											{% include '@SyliusShop/Product/_box.html.twig' %}
+										</div>
+									{% endfor %}
+								</div>
+								<div class="mt-3">
+									{{ pagination.simple(results) }}
+								</div>
+							{% else %}
+								<div class="d-flex justify-content-center">
+									<div class="alert alert-info">
+										{{ 'sylius.ui.no_results'|trans }}
+									</div>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% include '@BitBagSyliusElasticsearchPlugin/Shop/Product/Index/_sortingMobile.html.twig' %}
+{#  #}
+{% if (taxon.enabledChildren | length) > 0 %}
+	<div class="filter-widget m-2">
+		<div class="filter-header faq-heading heading_18 d-flex align-items-center justify-content-between border-bottom" data-bs-toggle="collapse" data-bs-target="#filter-collection-categories">
+			{{ 'sylius.ui.taxons'|trans }}
+			<span class="faq-heading-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-down">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</span>
+		</div>
+		<div id="filter-collection-categories" class="accordion-collapse collapse show">
+			<ul class="filter-lists list-unstyled mb-0">
+				{% for child in taxon.enabledChildren %}
+					<li class="filter-item">
+						<label class="filter-label">
+							{# <input type="checkbox"/> #}
+							<span class="filter-checkbox rounded me-2"></span>
+							<span class="filter-text">
+								<a href="{{ path('bitbag_sylius_elasticsearch_plugin_shop_list_products', {'slug': child.slug}) }}" class="nav-link-sub nav-text-sub" style="text-decoration:none;">{{ child.name }}</a>
+							</span>
+						</label>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+{% endif %}
+<div
+	class="">
+	{# {{ form_row(form.options) }} #}
+	{% include  '@BitBagSyliusElasticSearchPlugin/Shop/Product/Index/Filter/_attributeFilterForm.html.twig' with { 'form': form.options} %}
+</div>
+{# <hr class="bg-danger border-2 border-top border-danger" /> #}
+<div
+	class="">
+	{# {{ form_row(form.attributes) }} #}
+	{% include  '@BitBagSyliusElasticSearchPlugin/Shop/Product/Index/Filter/_attributeFilterForm.html.twig' with { 'form': form.attributes} %}
+</div>
+<div
+	class="">
+	{# {{ form_row(form.price) }} #}
+	<div class="m-2">
+		{% include  '@BitBagSyliusElasticSearchPlugin/Shop/Product/Index/Filter/_priceRangeFilterForm.html.twig' with { 'form': form.price} %}
+	</div>
+</div>
+{# <div
+	class="">
+	<div class="m-2">
+		{% include  '@BitBagSyliusElasticSearchPlugin/Shop/Product/Index/Filter/_facetsFilterForm.html.twig' with { 'form': form.facets} %}
+	</div>
+</div> #}
+	{# {{ form_row(form.facets) }} #}
+<div class="my-4">
+<hr/>
+</div>
+<div class="mx-md-2">
+	<button type="submit" class="btn btn-primary" style="width: 100%;">
+		<i class="fa fa-search"></i>
+		{{ 'sylius.ui.filter'|trans }}
+	</button>
+</div>

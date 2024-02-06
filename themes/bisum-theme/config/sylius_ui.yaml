@@ -1,0 +1,7 @@
+# config/packages/sylius_ui.yaml
+
+sylius_ui:
+    events:
+        sylius.shop.layout.after_header:
+            blocks:
+                my_block_name: 'block.html.twig'

@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_admin/stock_purchase_order_delete', {'id': purchase_order.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" data-requires-confirmation>
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purchase_order.id) }}">
+	<button class="ui red labeled icon button">
+		<i class="icon trash"></i>
+		Delete</button>
+</form>

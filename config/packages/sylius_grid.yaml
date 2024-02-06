@@ -1,0 +1,122 @@
+# config/packages/sylius_grid.yaml
+sylius_grid:
+  grids:
+    app_admin_stock:
+      sorting:
+        onHand: asc
+        onHold: desc
+      driver:
+        name: doctrine/orm
+        options:
+          class: App\Entity\Product\ProductVariant
+
+      actions:
+        main:
+        item:
+          # show:
+          #   type: show
+
+      fields:
+        code:
+          type: string
+          label: sylius.ui.code
+          sortable: ~
+        onHand:
+          type: string
+          label: sylius.ui.on_hand
+          sortable: ~
+        onHold:
+          type: string
+          label: sylius.ui.on_hold
+          sortable: ~
+        # state:
+        #   type: string
+        #   label: sylius.ui.state
+        #   sortable: ~
+
+        # enabled:
+        #   type: twig
+        #   label: sylius.ui.enabled
+        #   options:
+        #     template: "@SyliusUi/Grid/Field/enabled.html.twig" # This will be a checkbox field
+
+      filters:
+        code:
+          type: string
+        # onHand:
+        #   type: integer
+        # onHold:
+        #   type: integer
+
+    app_admin_stock_supplier:
+      driver:
+        name: doctrine/orm
+        options:
+          class: App\Entity\Inventory\Supplier
+
+      actions:
+        main:
+          create:
+            type: create
+        item:
+          update:
+            type: update
+          delete:
+            type: delete
+
+      fields:
+        name:
+          type: string
+          label: sylius.ui.name
+          sortable: ~
+        enabled:
+          type: twig
+          label: sylius.ui.enabled
+          options:
+            template: "@SyliusUi/Grid/Field/enabled.html.twig" # This will be a checkbox field
+
+      filters:
+        name:
+          type: string
+        enabled:
+          type: boolean
+    #
+    app_admin_stock_puchase_order:
+      driver:
+        name: doctrine/orm
+        options:
+          class: App\Entity\Inventory\PurchaseOrder
+
+      actions:
+        main:
+          create:
+            type: create
+        item:
+          update:
+            type: update
+          show:
+            type: show
+          delete:
+            type: delete
+
+      fields:
+        code:
+          type: string
+          label: sylius.ui.code
+          sortable: ~
+        state:
+          type: string
+          label: sylius.ui.state
+          sortable: ~
+
+        # enabled:
+        #   type: twig
+        #   label: sylius.ui.enabled
+        #   options:
+        #     template: "@SyliusUi/Grid/Field/enabled.html.twig" # This will be a checkbox field
+
+      filters:
+        name:
+          type: string
+        enabled:
+          type: boolean

@@ -1,0 +1,21 @@
+# translations/messages.en.yaml
+app:
+    ui:
+        supplier: Supplier
+        suppliers: Suppliers
+        new_supplier: Create Supplier
+        edit_supplier: Edit Supplier
+
+        purchase_order: Purchase Order
+        purchase_orders: Purchase Orders
+        new_purchase_order: Create Purchase Order
+        edit_purchase_order: Edit Purchase Order
+        
+        purchase_order_items: Purchase Order Items
+
+    menu:
+        admin:
+            main:
+                additional:
+                    header: Additional
+                    suppliers: Suppliers

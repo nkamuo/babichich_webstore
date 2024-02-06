@@ -1,0 +1,36 @@
+{% set CLOTHE_SIZE_OPTIONS = [
+    't_shirt_size', 'dress_size', 'jeans_size'
+]%}
+{% set CLOTHE_COLOR_OPTIONS = [
+    't_shirt_color', 
+]%}
+
+{% if option_form.vars.name in CLOTHE_SIZE_OPTIONS %}
+{# {{dump(option_form)}} #}
+	<div class="product-variant product-variant-other">
+		<strong class="label mb-1 d-block">Size:</strong>
+		<ul class="variant-list list-unstyled d-flex align-items-center flex-wrap">
+
+			{% for choice in option_form.vars.choices %}
+				<li class="variant-item">
+					<input type="radio" name={{ option_form.vars.full_name?? option_form.vars.name }} value="{{choice.value}}"  {% if option_form.vars.value == choice.value %} checked {% endif %}>
+					<label class="variant-label">{{choice.label}}</label>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% elseif option_form.vars.name in CLOTHE_COLOR_OPTIONS %}
+		<div class="product-variant product-variant-color">
+			<strong class="label mb-1 d-block">Color:</strong>
+			<ul class="variant-list list-unstyled d-flex align-items-center flex-wrap">
+				{% for choice in option_form.vars.choices %}
+					<li class="variant-item">
+						<input type="radio" value="{{choice.value}}" {% if option_form.vars.value == choice.value %} checked {% endif %}>
+						<label class="variant-label">{{choice.label}}</label>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% else %}
+			{{ form_row(option_form, { 'attr': { 'data-option': option_form.vars.name } }) }}
+		{% endif %}

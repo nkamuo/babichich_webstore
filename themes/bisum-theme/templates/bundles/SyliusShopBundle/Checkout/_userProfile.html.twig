@@ -1,0 +1,30 @@
+<div class="checkout-user-area overflow-hidden d-flex align-items-center">
+	{% if app.user is not null %}
+		{% set user = app.user %}
+		<div class="checkout-user-img me-4">
+			<img src="{{ asset('assets/img/checkout/user.jpg') }}" alt="img">
+		</div>
+		<div class="checkout-user-details d-flex align-items-center justify-content-between w-100">
+			<div class="checkout-user-info">
+				<h2 class="checkout-user-name">{{ user.fullName }}</h2>
+				<p class="checkout-user-address mb-0">{{user.email}},
+					{{user.phone}}</p>
+				{# <p class="checkout-user-address mb-0">2752 avenue Royale, Quebec, G1R 2B2, Canada</p> #}
+			</div>
+
+			<a href="{{ path('sylius_shop_account_profile_update') }}" class="edit-user btn-secondary">{{'sylius.ui.edit_profile'|trans}}</a>
+		</div>
+	{% else %}
+		<div class="checkout-user-img me-4">
+			<img src="{{ asset('assets/img/checkout/user.jpg') }}" alt="img">
+		</div>
+		<div class="checkout-user-details d-flex align-items-center justify-content-between w-100">
+			<div class="checkout-user-info">
+				<h2 class="checkout-user-name">Guest User</h2>
+				<p class="checkout-user-address mb-0">You are currently not signed in. Please consider signing in to proceed.</p>
+			</div>
+
+			<a href="{{path('sylius_shop_login')}}" class="edit-user btn-secondary">{{'sylius.ui.login'|trans}}</a>
+		</div>
+	{% endif %}
+</div>

@@ -1,0 +1,33 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set slug = app.request.get('slug') %}
+{% set queryParameters = app.request.query.all|unset_elements(['order_by', 'sort', 'page']) %}
+{% set sortBy = app.request.query.get('sort') %}
+
+<div class="filter-sorting">
+	<div class="collection-sorting position-relative d-none d-lg-block">
+		<div class="sorting-header text_16 d-flex align-items-center justify-content-end">
+			<span class="sorting-title me-2">{{ 'sylius.ui.sort'|trans }}:</span>
+			{% if sortBy %}
+				<span class="active-sorting">Featured</span>
+			{% endif %}
+			<span class="sorting-icon">
+				<svg class="icon icon-down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</span>
+		</div>
+
+
+		<ul class="sorting-lists list-unstyled m-0">
+			{% include '@BitBagSyliusElasticsearchPlugin/Shop/Product/Index/_sortEntries.html.twig' %}
+		</ul>
+	</div>
+	<div class="filter-drawer-trigger mobile-filter d-flex align-items-center d-lg-none">
+		<span class="mobile-filter-icon me-2">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-filter">
+				<polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+			</svg>
+		</span>
+		<span class="mobile-filter-heading">Filter and Sorting</span>
+	</div>
+</div>

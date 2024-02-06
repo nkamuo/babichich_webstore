@@ -1,0 +1,5 @@
+{% for child in form.children %}
+	<div class="m-2 my-4">
+		{% include '@BitBagSyliusElasticSearchPlugin/Shop/Product/Index/Filter/_choiceTypeFilterForm.html.twig' with {'form': child }%}
+	</div>
+{% endfor %}

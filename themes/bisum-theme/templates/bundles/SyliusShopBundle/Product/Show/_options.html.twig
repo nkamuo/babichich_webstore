@@ -1,0 +1,7 @@
+{% if form.cartItem.variant is defined %}
+	{% for option_form in form.cartItem.variant %}
+		{% include '@SyliusShop/Product/Show/_option.html.twig' %}
+	{% endfor %}
+{% endif %}
+
+{# {{dump()}} #}

@@ -1,0 +1,13 @@
+<div class="">
+    <div class="row">
+        {% for payment_form in form.payments %}
+            <div class="col">
+                {% include '@SyliusShop/Checkout/SelectPayment/_payment.html.twig' with {'form': payment_form} %}
+            </div>
+        {% else %}
+            <div class="col">
+                {% include '@SyliusShop/Checkout/SelectPayment/_unavailable.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

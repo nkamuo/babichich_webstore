@@ -1,0 +1,13 @@
+{# <div class="container"> #}
+<div class="row">
+	{% for key, shipment in order.shipments %}
+		<div class="col">
+			{% include '@SyliusShop/Checkout/SelectShipping/_shipment.html.twig' with {'form': form.shipments[key]} %}
+		</div>
+	{% else %}
+		<div class="col">
+			{% include '@SyliusShop/Checkout/SelectShipping/_unavailable.html.twig' %}
+		</div>
+	{% endfor %}
+</div>
+{# </div> #}

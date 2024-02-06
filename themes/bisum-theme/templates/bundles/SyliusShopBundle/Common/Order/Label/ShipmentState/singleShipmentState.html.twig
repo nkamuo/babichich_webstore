@@ -1,0 +1,15 @@
+{%
+    set viewOptions = {
+    cart: { icon: "bi bi-cart", color: "secondary" } ,
+    cancelled: { icon: "bi bi-x-circle", color: "danger" } ,
+    shipped: { icon: "bi bi-truck", color: "success" } ,
+    ready: { icon: "bi bi-clock", color: "primary" } ,
+    }
+%}
+
+{% set value = 'sylius.ui.' ~ state %}
+
+<span class="badge bg-{{ viewOptions[state]['color'] }}">
+    <i class="{{ viewOptions[state]['icon'] }}"></i>
+    {{ value|trans }}
+</span>

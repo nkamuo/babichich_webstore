@@ -1,0 +1,105 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en_US
+    google_recaptcha_site_key: "%env(GOOGLE_RECAPTCHA_SITE_KEY)%"
+    mailchimp.api_key: "%env(resolve:MAIL_CHIMP_API_KEY)%"
+    mailchimp.list_id: "%env(resolve:MAIL_CHIMP_LIST_ID)%"
+    mailchimp.webhook_secret: "%env(resolve:MAIL_CHIMP_WEBHOOK_SECRET)%"
+
+services:
+    # Default configuration for services in *this* file
+    _defaults:
+        # Automatically injects dependencies in your services
+        autowire: true
+
+        # Automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+
+        # Allows optimizing the container by removing unused services; this also means
+        # fetching services directly from the container via $container->get() won't work
+        public: false
+
+    _instanceof:
+        Sylius\Bundle\ResourceBundle\Controller\ResourceController:
+            autowire: false
+        Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType:
+            autowire: false
+
+    # Makes classes in src/ available to be used as services;
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: "../src/*"
+        exclude: "../src/{Entity,Migrations,Tests,Kernel.php}"
+
+    # Controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: "../src/Controller"
+        tags: ["controller.service_arguments"]
+
+        #
+
+
+    app.callback.purchase_order:
+        public: true
+        class: App\Service\Stock\PurchaseOrderCallback
+        tags:
+            - { name: kernel.event_listener, event: app.purchase_order.post_complete, method: complete }
+            - { name: kernel.event_listener, event: app.purchase_order.post_cancel, method: cancel }
+            - { name: kernel.event_listener, event: app.purchase_order.post_dispatch, method: dispatch }
+            - { name: kernel.event_listener, event: app.purchase_order.post_receive, method: receive }
+            - { name: kernel.event_listener, event: app.purchase_order.post_approve, method: approve }
+            - { name: kernel.event_listener, event: app.purchase_order.post_publish, method: publish }
+
+    app.custom_controller.purchase_order: 
+        # '@App\Controller\Admin\Stock\PurchaseOrderController'
+        alias: 'App\Controller\Admin\Stock\PurchaseOrderController'
+        public: true
+        # tags:
+        #     - controller.service_arguments
+
+    app.listener.admin.menu_builder:
+        class: App\Menu\AdminMenuListener
+        tags:
+            - {
+                  name: kernel.event_listener,
+                  event: sylius.menu.admin.main,
+                  method: addAdminMenuItems,
+              }
+
+
+    # ##################
+    ## ADDITIONAL CUSTOM SERVICES
+
+    Sms77\SyliusPlugin\Api\Client: 
+        autowire: true
+        public: true
+        
+    app.Kyrmann_payment:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments: [ App\Payum\KyrmannPayGatewayFactory ]
+        tags:
+            - { name: payum.gateway_factory_builder, factory: Kyrmann_pay }
+                
+    App\Form\KyrmannPayType:
+        tags:
+            - { name: sylius.gateway_configuration_type, type: Kyrmann_pay, label: "Kyrmann Payment" }
+            - { name: form.type}
+    
+    App\Payum\Action\CaptureAction:
+        autowire: true
+        public: true
+        arguments:
+            - '@sylius.http_client'
+        tags:
+            - { name: payum.action, factory: Kyrmann_pay, alias: payum.action.capture }
+
+    App\Controller\TaxonController:
+        autowire: true
+        public: true
+
+    app.controller.app.kyrmann.pay.callback:
+        class : App\Controller\Pay\KyrmannPAYCallBackController
+        autowire: true
+        public: true

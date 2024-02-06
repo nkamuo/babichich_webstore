@@ -1,0 +1,23 @@
+<div
+	class="form-group">
+	{# <div class="rating">
+				<input type="hidden" name="{{ form.rating.vars.full_name }}" value="0">
+				<input type="number" class="form-control" name="{{ form.rating.vars.full_name }}" min="0" max="5">
+			</div>
+			<br/> #}
+	{{ form_errors(form.rating) }}
+	{# {{ form_widget(form.rating, {'attr': {'r-style': 'display: none', 'class': 'rating'}}) }} #}
+	<input type="number" class="form-control rating-control" name="{{ form.rating.vars.full_name }}" value="{{ form.rating.vars.value }}" min="0" max="5">
+</div>
+<div class="form-group my-2">
+	{{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'sylius.ui.title'|trans}}) }}
+	{{ form_errors(form.title) }}</div>
+<div class="form-group my-2">
+	{{ form_widget(form.comment, {'attr': {'class': 'form-control', 'placeholder': 'sylius.ui.write_your_own_review'|trans, 'rows': 5,}}) }}
+	{{ form_errors(form.comment) }}</div>
+{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	<div class="form-group my-2">
+		{{ form_widget(form.author.email, {'attr': {'class': 'form-control', 'placeholder': 'sylius.ui.email'|trans}}) }}
+		{{ form_errors(form.author.email) }}
+	</div>
+{% endif %}

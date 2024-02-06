@@ -1,0 +1,57 @@
+{% if type is defined %}
+	{% set type = type ~ '-' %}
+{% else %}
+	{% set type = null %}
+{% endif %}
+
+<div class="row my-4">
+	<div class="col-md-6">
+		{{ form_row(form.firstName, {'attr': {'class': 'form-control', 'placeholder': form.firstName.vars.placeholder?? form.firstName.vars.label}}) }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.lastName, {'attr': {'class': 'form-control', 'placeholder': form.lastName.vars.placeholder?? form.lastName.vars.label}}) }}
+	</div>
+</div>
+
+{% if form.company is defined %}
+	<div class="my-4">
+		{{ form_row(form.company, {'attr': {'class': 'form-control', 'placeholder': form.company.vars.placeholder?? form.company.vars.label}}) }}
+	</div>
+{% endif %}
+
+<div class="my-4">
+	{{ form_row(form.street, {'attr': {'class': 'form-control', 'placeholder': form.street.vars.placeholder?? form.street.vars.label}}) }}
+</div>
+
+{% if form.countryCode is defined %}
+<div class="my-4">
+	{% include '@SyliusShop/Common/Form/_countryCode.html.twig' with {'form': form.countryCode} %}
+</div>
+{% endif %}
+
+<div class="r-province-container r-field my-4" data-url="{{ path('sylius_shop_ajax_render_province_form') }}">
+	{% if form.provinceCode is defined %}
+		{{ form_row(form.provinceCode, {'attr': {'class': 'form-control', 'placeholder': form.provinceCode.vars.placeholder?? form.provinceCode.vars.label}}) }}
+	{% elseif form.provinceName is defined %}
+		{{ form_row(form.provinceName, {'attr': {'class': 'form-control', 'placeholder': form.provinceName.vars.placeholder?? form.provinceName.vars.label}}) }}
+	{% endif %}
+</div>
+
+{% if form.provinceCode is defined %}
+	{{ form_errors(form) }}
+{% endif %}
+
+<div class="row my-4">
+	<div class=" {% if form.postcode is defined %} col-md-6 {% else %} col-md-12 {% endif %}">
+		{{ form_row(form.city, {'attr': {'class': 'form-control', 'placeholder': form.city.vars.placeholder?? form.city.vars.label}}) }}
+	</div>
+	{% if form.postcode is defined %}
+		<div class="col-md-6">
+			{{ form_row(form.postcode, {'attr': {'class': 'form-control', 'placeholder': form.postcode.vars.placeholder?? form.postcode.vars.label}}) }}
+		</div>
+	{% endif %}
+</div>
+
+<div class="my-4">
+	{{ form_row(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': form.phoneNumber.vars.placeholder?? form.phoneNumber.vars.label}}) }}
+</div>

@@ -1,0 +1,25 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "build": "encore dev",
+    "build:prod": "encore production",
+    "postinstall": "semantic-ui-css-patch",
+    "lint": "yarn lint:js",
+    "watch": "encore dev --watch"
+  },
+  "devDependencies": {
+    "@sylius-ui/frontend": "^1.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "axios": "^1.6.2",
+    "bootstrap": "^5.3.2",
+    "bootstrap.native": "^5.0.10",
+    "form-serialize": "^0.7.2",
+    "glightbox": "^3.2.0",
+    "lodash.throttle": "^4.1.1"
+  }
+}

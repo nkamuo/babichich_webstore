@@ -1,0 +1,120 @@
+{# {{
+
+	render(url('sylius_shop_partial_taxon_index_by_code', {'count': 8, 'template': '@SyliusShop/Product/_horizontalList.html.twig'}))
+}} #}
+
+<header class="sticky-header border-btm-black header-1">
+	<div class="header-bottom">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-3 col-md-4 col-4">
+					<div class="header-logo">
+						<a href="{{path('sylius_shop_homepage')}}" class="logo-main">
+							<img height="60" widget="80" src="{{ asset('assets/img/logo.png') }}" loading="lazy" alt="babichic">
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-6 d-lg-block d-none">
+					<div class="r-container">
+						{# <form action="{{ path('bitbag_sylius_elasticsearch_plugin_shop_search') }}" method="get" role="search" class="form-inline">
+																																																																									<div class="input-group mt-2">
+																																																																										<input type="text" class="form-control" placeholder="Search your products..." autocomplete="off" aria-describedby="button-addon2">
+																																																																										<button class="btn btn-primary" type="submit" id="button-addon2">
+																																																																											<svg class="icon icon-search" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+																																																																												<path d="M7.75 0.250183C11.8838 0.250183 15.25 3.61639 15.25 7.75018C15.25 9.54608 14.6201 11.1926 13.5625 12.4846L19.5391 18.4611L18.4609 19.5392L12.4844 13.5627C11.1924 14.6203 9.5459 15.2502 7.75 15.2502C3.61621 15.2502 0.25 11.884 0.25 7.75018C0.25 3.61639 3.61621 0.250183 7.75 0.250183ZM7.75 1.75018C4.42773 1.75018 1.75 4.42792 1.75 7.75018C1.75 11.0724 4.42773 13.7502 7.75 13.7502C11.0723 13.7502 13.75 11.0724 13.75 7.75018C13.75 4.42792 11.0723 1.75018 7.75 1.75018Z" fill="black"></path>
+																																																																											</svg>
+																																																																										</button>
+																																																																									</div>
+																																																																								</form> #}
+
+						{# <div class="input-group">
+																																																							<input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+																																																							<div class="input-group-append">
+																																																								<button class="btn btn-outline-secondary" type="button" id="button-addon2">
+																																																									<i class="bi bi-search"></i>
+																																																								</button>
+																																																							</div>
+																																										</div> #}
+
+						{# {% if bitbag_elasticsearch_search is defined and bitbag_elasticsearch_search.box is defined %}
+																																											{{form_row(bitbag_elasticsearch_search.box)}}
+																																										{% else %}
+																																											<div class="input-group">
+																																												<input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+																																												<div class="input-group-append">
+																																													<button class="btn btn-outline-secondary" type="button" id="button-addon2">
+																																														<i class="bi bi-search"></i>
+																																													</button>
+																																												</div>
+																																											</div>
+																																										{% endif %} #}
+
+
+					{{ sylius_template_event('sylius.shop.layout.header.content') }}
+
+				</div>
+
+					<!-- NAVIGATION -->
+				{# {{ render(url('sylius_shop_partial_channel_menu_taxon_index', {'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }} #}
+					<!-- NAVIGATION -->
+				</div>
+				<div class="col-lg-3 col-md-8 col-8">
+					<div
+						class="header-action d-flex align-items-center justify-content-end">
+						{# <a class="header-action-item header-search" href="javascript:void(0)">
+																																																																													</a> #}
+						<a class="header-action-item header-wishlist ms-4 d-none d-lg-block" href="{{ path('sylius_shop_login') }}">
+							<svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewbox="0 0 448 512">
+								<path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464H398.7c-8.9-63.3-63.3-112-129-112H178.3c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3z"/>
+							</svg>
+						</a>
+						<a class="header-action-item header-wishlist ms-4 d-none d-lg-block" href="{{path('bitbag_sylius_wishlist_plugin_shop_wishlist_list_products')}}">
+							<svg class="icon icon-wishlist" width="26" height="22" viewbox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z" fill="black"/>
+							</svg>
+						</a>
+						{% include '@SyliusShop/Layout/Header/_cart.html.twig' %}
+						<a class="header-action-item header-hamburger ms-4 d-lg-none" href="#drawer-menu" data-bs-toggle="offcanvas">
+							<svg class="icon icon-hamburger" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<line x1="3" y1="12" x2="21" y2="12"></line>
+								<line x1="3" y1="6" x2="21" y2="6"></line>
+								<line x1="3" y1="18" x2="21" y2="18"></line>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{#  #}
+		<div class="search-wrapper d-sm-none">
+			<div class="container">
+				<form action="#" class="search-form d-flex align-items-center">
+					<button type="submit" class="search-submit bg-transparent pl-0 text-start">
+						<svg class="icon icon-search" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.75 0.250183C11.8838 0.250183 15.25 3.61639 15.25 7.75018C15.25 9.54608 14.6201 11.1926 13.5625 12.4846L19.5391 18.4611L18.4609 19.5392L12.4844 13.5627C11.1924 14.6203 9.5459 15.2502 7.75 15.2502C3.61621 15.2502 0.25 11.884 0.25 7.75018C0.25 3.61639 3.61621 0.250183 7.75 0.250183ZM7.75 1.75018C4.42773 1.75018 1.75 4.42792 1.75 7.75018C1.75 11.0724 4.42773 13.7502 7.75 13.7502C11.0723 13.7502 13.75 11.0724 13.75 7.75018C13.75 4.42792 11.0723 1.75018 7.75 1.75018Z" fill="black"/>
+						</svg>
+					</button>
+					<div class="search-input mr-4">
+						<input type="text" placeholder="Search your products..." autocomplete="off">
+					</div>
+					<div class="search-close">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-close">
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="header-bottom d-none d-sm-block">
+		<div class="container">
+			<div
+				class="row">
+				<!-- NAVIGATION -->
+				{{ render(url('sylius_shop_partial_channel_menu_taxon_index', {'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+				<!-- NAVIGATION -->
+			</div>
+		</div>
+	</div>
+</header>

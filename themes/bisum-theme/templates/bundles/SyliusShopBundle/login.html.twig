@@ -1,0 +1,207 @@
+{% import '@SyliusUi/Macro/messages.html.twig' as messages %}
+{% extends '@SyliusShop/bisum-layout.html.twig' %}
+
+{% form_theme form '@SyliusShop/Form/theme.html.twig' %}
+
+{% block title %}
+	{{ 'sylius.ui.customer_login'|trans }}
+	|
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+	<!-- breadcrumb start -->
+	<div class="breadcrumb">
+		<div class="container">
+			<ul class="list-unstyled d-flex align-items-center m-0">
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<svg class="icon icon-breadcrumb" width="64" height="64" viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<g opacity="0.4">
+							<path d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z" fill="#000"/>
+						</g>
+					</svg>
+				</li>
+				<li>Login</li>
+			</ul>
+		</div>
+	</div>
+	<!-- breadcrumb end -->
+
+	{# {% include '@SyliusShop/Login/_header.html.twig' %} #}
+
+
+	<main
+		id="MainContent" class="content-for-layout">
+		{# {{dump(form)}} #}
+		<div class="login-page mt-100">
+			<div class="container">
+				{{form_start(form,{attr:{'class':'login-form common-form mx-auto', 'action': path('sylius_shop_login_check'), '@submit':'(evt) => isLoggingIn? evt?.preventDefault() : login(evt)'}})}}
+				{# {{ form_start(form, {'action': path('sylius_shop_login_check'), 'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }} #}
+				<div class="section-header mb-3">
+					<h2 class="section-heading text-center">Login</h2>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						{{ form_errors(form) }}
+						{% if last_error %}
+							<div class="alert alert-error">
+								{{last_error.messageKey|trans(last_error.messageData, 'security')}}
+							</div>
+						{% endif %}
+					</div>
+					<div class="col-12">{# {{dump(form)}} #}
+						{# {% if form.hasErrors %}
+																																																																																																																																																	<div class="alert alert-danger" role="alert">
+																																																																																																																																																		{{ error.messageKey|trans(error.messageData, 'security') }}
+																																																																																																																																																	</div>
+																																																																																																																																																{% endif %} #}
+					</div>
+					<div class="col-12">
+						<div class="row mt-3">
+							<div class="col-6 d-grid gap-2">
+								<a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook'}) }}" class="btn btn-primary btn-block" target="_black">
+									<i class="fa fa-facebook"></i>
+									<span>Facebook</span>
+								</a>
+							</div>
+							<div class="col-6 d-grid gap-2">
+								<a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-danger btn-block" target="_black">
+									<i class="fa fa-google"></i>
+									<span>Google</span>
+								</a>
+							</div>
+						</div>
+
+
+						<div class="row my-3">
+							<div class="col"><hr/></div>
+							<div class="col-auto">OR</div>
+							<div class="col"><hr/></div>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Email address</label>
+																																																																																																																																																																																																																										<input type="email"/> #}
+							{{ form_row(form._username,{attr:{'placeholder':"E-Mail or Phone number"|trans}}) }}
+						</fieldset>
+					</div>
+					<div class="col-12">
+						<fieldset>
+							{# <label class="label">Password</label>
+																																																																																																																																																																																																																										<input type="password"/> #}
+							{{ form_row(form._password) }}
+						</fieldset>
+
+
+						<div class="col-12">
+							<fieldset>
+								{# {% set checkbox = form._remember_me %}
+																								<input type="checkbox" role="switch" id="{{checkbox.vars.id}}" name="{{ checkbox.vars.full_name }}" value="{{ checkbox.vars.value}}" {% if checkbox.vars.data %} checked {% endif %} class="btn-check" autocomplete="off"/>
+																								<label class="btn btn-outline-primary" for="{{ checkbox.vars.id }}">{{ checkbox.vars.label | trans}}</label> #}
+								{{ form_row(form._remember_me, {'attr':{'checked': 'checked'}}) }}
+							</fieldset>
+						</div>
+						<div class="col-12 mt-3">
+							<a href="{{ path('sylius_shop_request_password_reset_token')}}" class="text_14 d-block">Forgot your password?</a>
+							<button id="login-button" type="submit" class="btn-primary d-block mt-4 btn-signin">{{ 'sylius.ui.login' | trans}}</button>
+							<a href="{{path('sylius_shop_register')}}" class="btn-secondary mt-2 btn-signin">CREATE AN ACCOUNT</a>
+						</div>
+
+					</div>
+					{# {{ form_widget(form._token, {'attr':{ 'value': form._token.vars.value}})}} #}
+					<input type="hidden" name="_csrf_shop_security_token" value="{{ form._token.vars.value }}">
+					{{form_end(form)}}
+				</div>
+			</div>
+		</main>
+	{% endblock %}
+
+	{% block append %}
+		{{parent()}}
+
+		<script type="module">
+			import {createApp, ref} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+const VueLoginButtonInnerHTML = `
+		<div class="row justify-center">
+				<div v-if="isLoggingIn" class="spinner-border text-primary" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<span v-else>
+					{{ 'sylius.ui.login'|trans }}
+				</span>
+			</div>`;
+
+const loginButtonId = 'login-button';
+
+const app = createApp({
+setup() {
+const isLoggingIn = ref(false);
+const error = ref(null); // as string|null
+
+async function login(evt) {
+try {
+evt.preventDefault();
+console.log("TRIGGERED: ", evt);
+isLoggingIn.value = true;
+const form = evt.target;
+const formData = new FormData(form);
+const json = JSON.stringify(Object.fromEntries(formData));
+const response = await fetch(form.action, {
+method: form.method ?? 'POST',
+headers: {
+// 'Content-Type': 'application/json'
+// 'Accepts': 'application/json'
+},
+// body: json
+body: formData
+})
+const result = await response.json()
+console.log("RESULT: ", result);
+} catch (err) {
+throw err;
+console.error(err);
+} finally {
+isLoggingIn.value = false;
+}
+}
+
+return {isLoggingIn, login}
+}
+});
+
+
+function doLogin(form) {
+return new Promise((resolve, reject) => {
+const data = new FormData(form);
+$.ajax({
+url: form.action, // window.location.href,
+type: 'POST',
+data,
+processData: false,
+contentType: false,
+success: function (data) {
+resolve(data)
+},
+error: function (error) {
+reject(error)
+}
+})
+})
+}
+
+
+$(document).ready(function () {
+$ (`#${loginButtonId}`).html(VueLoginButtonInnerHTML);
+setTimeout(() => {
+app.mount('#MainContent');
+}, 1000);
+});
+		</script>
+	{% endblock %}

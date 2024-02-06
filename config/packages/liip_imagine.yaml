@@ -1,0 +1,20 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.project_dir%/public"
+                cache_prefix: "media/cache"
+
+    filter_sets:
+        app_product_thumbnail:
+            filters:
+                thumbnail: { size: [600, 769], mode: inset }
+
+        app_product_image:
+            filters:
+                thumbnail: { size: [1000, 1286], mode: inset }
+                
+# 1000, 1286]
+#  800x1024 pixels
+# 600 x 769 pixels
+# 500x643 pixels

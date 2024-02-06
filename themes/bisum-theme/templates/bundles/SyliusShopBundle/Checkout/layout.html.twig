@@ -1,0 +1,105 @@
+{% extends '@SyliusShop/bisum-layout.html.twig' %}
+
+
+{% block stylesheets %}
+	{{parent()}}
+	<style>:root
+	{
+		--primary-color: #00234D;
+		--secondary-color: #F76B6A;
+
+		--btn-primary-border-radius: 0.25rem;
+		--btn-primary-color: #fff;
+		--btn-primary-background-color: #00234D;
+		--btn-primary-border-color: #00234D;
+		--btn-primary-hover-color: #fff;
+		--btn-primary-background-hover-color: #00234D;
+		--btn-primary-border-hover-color: #00234D;
+		--btn-primary-font-weight: 500;
+
+		--btn-secondary-border-radius: 0.25rem;
+		--btn-secondary-color: #00234D;
+		--btn-secondary-background-color: transparent;
+		--btn-secondary-border-color: #00234D;
+		--btn-secondary-hover-color: #fff;
+		--btn-secondary-background-hover-color: #00234D;
+		--btn-secondary-border-hover-color: #00234D;
+		--btn-secondary-font-weight: 500;
+
+		--heading-color: #000;
+		--heading-font-family: 'Poppins', sans-serif;
+		--heading-font-weight: 700;
+
+		--title-color: #000;
+		--title-font-family: 'Poppins', sans-serif;
+		--title-font-weight: 400;
+
+		--body-color: #000;
+		--body-background-color: #fff;
+		--body-font-family: 'Poppins', sans-serif;
+		--body-font-size: 14px;
+		--body-font-weight: 400;
+
+		--section-heading-color: #000;
+		--section-heading-font-family: 'Poppins', sans-serif;
+		--section-heading-font-size: 48px;
+		--section-heading-font-weight: 600;
+
+		--section-subheading-color: #000;
+		--section-subheading-font-family: 'Poppins', sans-serif;
+		--section-subheading-font-size: 16px;
+		--section-subheading-font-weight: 400;
+	}
+</style>
+{#  #}
+{% endblock %}
+{#  #}
+
+{% block top %}
+{#  #}
+{# Clear the topmost section. We do not want it in the checkout.  #}
+{{parent()}}
+{#  #}
+{% endblock %}
+
+{% block header %}
+{{parent()}}
+{# Override the normal page header with a custom one for all checkout steps. #}
+{# {{ sylius_template_event('sylius.shop.checkout.header', _context) }} #}\
+{% endblock %}
+{#  #}
+{% block content %}<main id="MainContent" class="content-for-layout">
+<div class="checkout-page mt-100">
+	<div class="container">
+		<div class="checkout-page-wrapper">
+			<div class="row">
+				<div class="col-xl-9 col-lg-8 col-md-12 col-12">
+					<div class="section-header mb-3">
+						<h2 class="section-heading">Check out</h2>
+					</div>
+					{#  #}
+					<div class="row justify-content-center">
+					<div class="col-lg-10 col-md-12 col-12">
+						{% block steps %}
+							{% include '@SyliusShop/Checkout/_steps.html.twig' %}
+						{% endblock %}
+						</div>
+					</div>
+					{#  #}
+					{# {% block flash %}
+							{% include '@SyliusUi/_flash.html.twig' %}
+						{% endblock %} #}
+						{#  #}
+						{% include '@SyliusShop/Checkout/_userProfile.html.twig' %}
+
+						{% block step %}{% endblock %}
+					</div>
+
+					<div class="col-xl-3 col-lg-4 col-md-12 col-12">
+						{% include '@SyliusShop/Checkout/_summary.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>{% endblock %}

@@ -1,0 +1,27 @@
+{% import '@SyliusShop/Common/Macro/money.html.twig' as money %}
+
+<div class="item" {{ sylius_test_html_attribute('shipping-item') }}>
+	<div class="form-check" {{ sylius_test_html_attribute('shipping-method-checkbox') }}>
+		{{ form_widget(form, sylius_test_form_attribute('shipping-method-select')|sylius_merge_recursive({'attr':{'class':'form-check-input'}})) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			<a class="header" {{ sylius_test_html_attribute('shipping-method-label') }}>{{ form_label(form) }}</a>
+			{% if method.description is not null %}
+				<div class="description">
+					<p>{{ method.description }}</p>
+				</div>
+			{% endif %}
+		</div>
+		<div class="col-auto">
+			<div class="badge bg-secondary" {{ sylius_test_html_attribute('shipping-method-price') }}>
+				{{ money.convertAndFormat(fee) }}
+			</div>
+			{# <div class="col">
+						<div class="badge bg-secondary" {{ sylius_test_html_attribute('shipping-method-fee') }}>
+							{{ money.convertAndFormat(fee) }}
+						</div>
+					</div> #}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('app_admin/stock_purchase_order_apply_transition', {'order': purchase_order.id, 'transition': 'dispatch'}) }}" onsubmit="return confirm('Are you sure you want to dispatch this order. This implies that the supplier have sent out the shipment?');">
+	<input type="hidden" name="_method" value="PUT">
+	<input type="hidden" name="_token" value="{{ csrf_token('confirm' ~ purchase_order.id) }}">
+	<button class="ui labeled icon primary button">
+		<i class="proceed icon"></i>
+		{{'sylius.ui.dispatch'|trans}}
+	</button>
+</form>

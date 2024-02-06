@@ -1,0 +1,17 @@
+{% if order.channel.contactPhoneNumber %}
+    <div class="text-center">
+        <i class="bi bi-telephone-fill"></i>
+        {{ order.channel.contactPhoneNumber }}
+        <p class="sub-header">
+            {{ 'sylius.ui.need_assistance'|trans }} {{ 'sylius.ui.call_us'|trans }}
+        </p>
+    </div>
+{% endif %}
+
+<hr class="my-4">
+
+<div class="text-center">
+    <i class="bi bi-credit-card-2-front"></i>
+    <i class="bi bi-credit-card-2-front"></i>
+    <i class="bi bi-paypal"></i>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ path('sylius_shop_homepage') }}">
+            {% if use_webpack %}
+                <img src="{{ asset('build/shop/images/logo.png', 'shop') }}" alt="Logo" />
+            {% else %}
+                <img src="{{ asset('assets/shop/img/logo.png') }}" alt="Logo" />
+            {% endif %}
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% if order.customer.id|default(null) is not null %}
+                    <li class="nav-item" id="purchaser-email" {{ sylius_test_html_attribute('purchaser-name-or-email') }}>
+                        <span class="nav-link">{{ 'sylius.ui.checking_out_as'|trans }} {{ app.user is null ? order.customer.email : order.customer.fullName|default(order.customer.email) }}.</span>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{{ path('sylius_shop_login') }}" class="nav-link">{{ 'sylius.ui.sign_in'|trans }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>

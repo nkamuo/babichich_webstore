@@ -1,0 +1,124 @@
+sylius_paypal_webhook:
+    resource: "@SyliusPayPalPlugin/Resources/config/webhook_routing.yaml"
+
+# >> CUSTOM ROUTES
+odiseo_sylius_blog_plugin_admin:
+    resource: "@OdiseoSyliusBlogPlugin/Resources/config/routing/admin.yaml"
+    prefix: /admin/blog
+
+odiseo_sylius_blog_plugin_shop:
+    resource: "@OdiseoSyliusBlogPlugin/Resources/config/routing/shop.yaml"
+    prefix: /{_locale}/blog
+    requirements:
+        _locale: ^[A-Za-z]{2,4}(_([A-Za-z]{4}|[0-9]{3}))?(_([A-Za-z]{2}|[0-9]{3}))?$
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix: /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /login
+
+facebook:
+    path: /login/check-facebook
+
+    ### >>> SYLIUS RESOURCE ROUTES
+
+sylius_crud_routes:
+    resource: "sylius.routing.loader.crud_routes_attributes"
+    type: service
+
+sylius_routes:
+    resource: "sylius.routing.loader.routes_attributes"
+    type: service
+
+    ##
+
+app_admin_stock_stock:
+    resource: |
+        alias: sylius.product_variant
+        section: admin/stock
+        templates: "@SyliusAdmin\\Crud"
+        except: ['show','create','update','bulk_delete','delete']
+        redirect: update
+        grid: app_admin_stock
+        vars:
+            all:
+                subheader: sylius.ui.product_variant # define a translation key for your entity subheader
+            index:
+                icon: 'file image outline' # choose an icon that will be displayed next to the subheader
+    type: sylius.resource
+    prefix: admin/stock
+
+app_admin_stock_supplier:
+    resource: |
+        alias: app.supplier
+        section: admin/stock
+        templates: "@SyliusAdmin\\Crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_stock_supplier
+        vars:
+            all:
+                subheader: app.ui.supplier # define a translation key for your entity subheader
+            index:
+                icon: 'file image outline' # choose an icon that will be displayed next to the subheader
+    type: sylius.resource
+    prefix: admin/stock
+
+app_admin_stock_purchase_order:
+    resource: |
+        alias: app.purchase_order
+        section: admin/stock
+        templates: "@SyliusAdmin\\Crud"
+        except: ['show']
+        redirect: update
+        grid: app_admin_stock_puchase_order
+        vars:
+            all:
+                subheader: app.ui.purchase_order # define a translation key for your entity subheader
+            index:
+                icon: 'file image outline' # choose an icon that will be displayed next to the subheader
+    type: sylius.resource
+    prefix: admin/stock
+
+app_admin/stock_purchase_order_show:
+    path: /admin/stock/puchase-orders/{id}
+    methods: [GET]
+    defaults:
+        _controller: app.controller.purchase_order::showAction
+        _sylius:
+            template: admin/stock/purchase_order/show.html.twig
+
+app_admin/stock_purchase_order_apply_transition:
+    path: /admin/stock/purchase-order/{order}/{transition}
+    methods: [PUT, PATCH, POST]
+    defaults:
+        _controller: app.custom_controller.purchase_order::applyTransition
+        _sylius:
+            state_machine:
+                #graph: pull_request # name of the graph for Winzou or workflow name for Symfony (optional)
+                transition: $transition
+
+bitbag_sylius_wishlist_plugin:
+    resource: "@BitBagSyliusWishlistPlugin/Resources/config/routing.yml"
+
+bitbag_sylius_elasticsearch_plugin:
+    resource: "@BitBagSyliusElasticsearchPlugin/Resources/config/routing.yml"
+
+app_kyrmann_pay_callback_controller:
+    path: /{_locale}/kyrmann_pay_callback/{id}
+    methods: [POST, GET]
+    defaults:
+        _controller: app.controller.app.kyrmann.pay.callback:callback
+        # _sylius:
+        #     template: "@SyliusShop/Checkout/ThankYou/_payment.html.twig"
+        #     vars:
+        #         'order': $id
+        #        'payment': $payment
+        # from Github CoPilot

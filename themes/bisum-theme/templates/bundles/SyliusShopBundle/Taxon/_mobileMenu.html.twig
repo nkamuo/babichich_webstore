@@ -1,0 +1,58 @@
+{% macro item(taxon, level = 0) %}
+	{% import _self as macros %}
+
+	{% set hasChildren = taxon.enabledChildren|length > 0 %}
+	{% set hasGrandChildren = hasChildren and taxon.enabledChildren|filter(c => c.enabledChildren is not empty)|length > 0 %}
+	{% set href = path('sylius_shop_product_index', {'slug': taxon.slug, '_locale': taxon.translation.locale}) %}
+
+	<li class="menu-list-item nav-item {% if hasGrandChildren %} has-megamenu {% elseif hasChildren  %} has-dropdown {% else %} nav-item-sub {% endif %}">
+		{% if hasChildren %}
+			<div class="mega-menu-header">
+		{% endif %}
+			<a class="{% if hasChildren %} nav-link-sub nav-text-sub {% else %} nav-link {% endif %}" href="{{ href }}">
+				{{ taxon.name }}
+			</a>
+			{% if hasChildren %}
+				<span class="open-submenu">
+					<svg class="icon icon-dropdown" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="9 18 15 12 9 6"></polyline>
+					</svg>
+				</span>
+			{% endif %}
+			{% if hasChildren %}
+			</div>
+		{% endif %}
+
+		{% if hasChildren %}
+			<div class="submenu-transform submenu-transform-desktop">
+				<div class="offcanvas-header border-btm-black">
+					<h5 class="drawer-heading btn-menu-back d-flex align-items-center">
+						<svg class="icon icon-menu-back" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="15 18 9 12 15 6"></polyline>
+						</svg>
+						<span class="menu-back-text">{{ taxon.name }}</span>
+					</h5>
+				</div>
+				<ul class="submenu list-unstyled">
+					{% for child in taxon.enabledChildren %}
+						{% set href = path('sylius_shop_product_index', {'slug': child.slug, '_locale': child.translation.locale}) %}
+						{# <li class="menu-list-item nav-item-sub">
+																										<a class="nav-link-sub nav-text-sub" href="{{ href }}">{{ child.name }}</a>
+																									</li> #}
+						{{ macros.item(child, level + 1) }}
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	</li>
+{% endmacro %}
+{% import _self as macros %}
+{% if taxons|length > 0 %}
+	<nav class="site-navigation">
+		<ul class="main-menu list-unstyled">
+			{% for taxon in taxons %}
+				{{ macros.item(taxon) }}
+			{% endfor %}
+		</ul>
+	</nav>
+{% endif %}

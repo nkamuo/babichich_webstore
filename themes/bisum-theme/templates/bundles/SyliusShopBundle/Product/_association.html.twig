@@ -1,0 +1,46 @@
+<div class="featured-collection-section mt-100 home-section overflow-hidden">
+	<div class="container">
+		<div class="section-header">
+			<h2 class="section-heading">{{ product_association.type.name }}</h2>
+		</div>
+
+		<div class="product-container position-relative">
+			<div class="common-slider" data-slick='{
+																	                        "slidesToShow": 4,
+																	                        "slidesToScroll": 1,
+																	                        "dots": false,
+																	                        "arrows": true,
+																	                        "responsive": [
+																	                        {
+																	                            "breakpoint": 1281,
+																	                            "settings": {
+																	                            "slidesToShow": 3
+																	                            }
+																	                        },
+																	                        {
+																	                            "breakpoint": 768,
+																	                            "settings": {
+																	                            "slidesToShow": 2
+																	                            }
+																	                        }
+																	                        ]
+																	                    }'>
+
+				{% for product in product_association.associatedProducts %}
+
+					<div class="new-item" data-aos="fade-up" data-aos-duration="300">
+
+						{% include '@SyliusShop/Product/_box.html.twig' %}
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+{# 
+	<h4 class="ui horizontal section divider header">{{ product_association.type.name }}</h4>
+	<div id="sylius-product-association-{{ product_association.type.name }}">
+		{% include '@SyliusShop/Product/_horizontalList.html.twig' with {'products': product_association.associatedProducts} %}
+	</div> #}

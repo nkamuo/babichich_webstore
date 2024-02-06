@@ -1,0 +1,23 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set orderPromotionAdjustment = constant('Sylius\\Component\\Core\\Model\\AdjustmentInterface::ORDER_PROMOTION_ADJUSTMENT') %}
+{% set orderPromotions = sylius_aggregate_adjustments(order.getAdjustmentsRecursively(orderPromotionAdjustment)) %}
+
+{% if not orderPromotions is empty %}
+    <td colspan="2" id="promotion-discounts" {{ sylius_test_html_attribute('promotion-discounts') }}>
+        <div class="list-group">
+            {% for label, amount in orderPromotions %}
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ label }}</h5>
+                        <small>{{ money.convertAndFormat(amount) }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </td>
+{% endif %}
+<td colspan="{% if not orderPromotions is empty %}2{% else %}4{% endif %}" id="promotion-total" class="text-end" {{ sylius_test_html_attribute('promotion-total') }}>
+    {{ 'sylius.ui.promotion_total'|trans }}:
+    {{ money.format(order.orderPromotionTotal, order.currencyCode) }}
+</td>

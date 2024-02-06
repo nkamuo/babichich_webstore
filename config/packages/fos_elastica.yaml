@@ -1,0 +1,12 @@
+
+# fos_elastica:
+#     clients:
+#         default:
+#           host: localhost
+#           port: 9200
+#           username: null
+#           password: password
+#           # servers:
+#           #   host: localhost
+#           #   headers:
+#           #     Authorization: Basic {base64 encoded username:password}

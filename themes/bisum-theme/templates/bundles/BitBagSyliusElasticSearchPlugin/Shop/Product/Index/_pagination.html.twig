@@ -1,0 +1,14 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set slug = app.request.get('slug') %}
+{% set queryParameters = app.request.query.all|unset_elements(['limit', 'page']) %}
+
+<div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="perPageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ 'sylius.ui.limit'|trans }}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="perPageDropdown">
+        {% for limit in bitbag_es_pagination_available_page_limits %}
+            <li><a class="dropdown-item" href="{{ path(route, {'slug': slug, 'limit': limit}|merge(queryParameters)) }}">{{ limit }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

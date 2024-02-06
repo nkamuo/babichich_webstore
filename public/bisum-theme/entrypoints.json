@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "app": {
+      "css": [
+        "/bisum-theme/app.css"
+      ],
+      "js": [
+        "/bisum-theme/app.js"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set state = order.paymentState %}
+
+{% if state != 'cart' %}
+    {% include "@SyliusShop/Common/Order/Label/PaymentState/orderPaymentState.html.twig" %}
+{% endif %}
+
+{% for payment in order.payments %}
+    {% set state = payment.state %}
+
+    <div class="alert alert-primary" role="alert">
+        <i class="fa fa-credit-card"></i>
+        <div class="content">
+            <h4 class="alert-heading" id="sylius-payment-method" {{ sylius_test_html_attribute('payment-method') }}>
+                {{ payment.method }}
+            </h4>
+            <p {{ sylius_test_html_attribute('payment-price') }}>{{ money.format(payment.amount, payment.currencyCode) }}</p>
+            {% if state != 'cart' %}
+            <p id="payment-status" {{ sylius_test_html_attribute('payment-state') }}>
+                {% include "@SyliusShop/Common/Order/Label/PaymentState/singlePaymentState.html.twig" with { 'state': state } %}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
